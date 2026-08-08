@@ -19,7 +19,6 @@ export default function Home() {
   const [showExclusiveShareModal, setShowExclusiveShareModal] = useState(false)
   const galleryRef = useRef<HTMLDivElement>(null)
   const clipsRef = useRef<HTMLDivElement>(null)
-  const videoPlayerRef = useRef<HTMLDivElement>(null)
   const exclusiveRef = useRef<HTMLDivElement>(null)
   const [clipsToShow, setClipsToShow] = useState(6)
   const { toggleMusic, isPlaying: isHeroMusicPlaying } = useBackgroundMusic()

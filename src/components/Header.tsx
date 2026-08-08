@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { FaFacebook, FaInstagram, FaYoutube, FaSpotify } from 'react-icons/fa'
 import '../styles/Header.css'
 
 export default function Header() {
