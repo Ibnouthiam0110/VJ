@@ -39,7 +39,7 @@ export default function Home() {
 
   const { data: artist } = useQuery({ queryKey: ['artist'], queryFn: () => getArtist() })
   const { data: albums } = useQuery({ queryKey: ['albums'], queryFn: () => getAlbums() })
-  const { data: songs } = useQuery({ queryKey: ['songs'], queryFn: () => fetch('http://localhost:3000/api/songs?limit=100').then(r => r.json()).then(d => d.data || []) })
+  const { data: songs } = useQuery({ queryKey: ['songs'], queryFn: () => fetch(`${import.meta.env.VITE_API_URL || 'https://mouhamed-vj-backend.onrender.com'}/api/songs?limit=100`).then(r => r.json()).then(d => d.data || []) })
   const { data: blog } = useQuery({ queryKey: ['blog'], queryFn: async () => getBlogPosts() })
   const { data: concerts } = useQuery({ queryKey: ['concerts'], queryFn: () => getConcerts() })
   const { data: gallery } = useQuery({ queryKey: ['gallery'], queryFn: () => getGallery() })
