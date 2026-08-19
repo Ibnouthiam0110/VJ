@@ -12,6 +12,8 @@ export default function Home() {
   const [selectedSong, setSelectedSong] = useState<any>(null)
   const [showBioModal, setShowBioModal] = useState(false)
   const [showShareModal, setShowShareModal] = useState(false)
+  const [showSongModal, setShowSongModal] = useState(false)
+  const [modalSong, setModalSong] = useState<any>(null)
   const [selectedGalleryIdx, setSelectedGalleryIdx] = useState<number | null>(null)
   const [showAllGallery, setShowAllGallery] = useState(false)
   const [playingExclusiveVideo, setPlayingExclusiveVideo] = useState(false)
@@ -422,8 +424,8 @@ const songsWithoutAlbum = songs
               const thumbnailUrl = youtubeId ? `https://img.youtube.com/vi/${youtubeId}/sddefault.jpg` : '/images/placeholder.png';
               return (
                 <div key={song.id} className="gallery-item" style={{ cursor: 'pointer' }} onClick={() => {
-                  setSelectedAlbum({ id: song.id, title: song.title, releaseDate: new Date(), songs: [song], coverImage: thumbnailUrl })
-                  setSelectedSong(song)
+                  setModalSong(song)
+                  setShowSongModal(true)
                 }}>
                   <img src={thumbnailUrl} alt={song.title} />
                   <div className="gallery-overlay">
@@ -1041,6 +1043,52 @@ const songsWithoutAlbum = songs
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* SONG MODAL */}
+      {showSongModal && modalSong && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '1rem' }} onClick={() => setShowSongModal(false)}>
+          <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%)', border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '1rem', padding: '2rem', maxWidth: '500px', width: '100%', maxHeight: '90vh', overflow: 'auto' }} onClick={(e) => e.stopPropagation()}>
+            {/* Close Button */}
+            <button onClick={() => setShowSongModal(false)} style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: '#d4af37', border: 'none', color: '#000', width: '40px', height: '40px', borderRadius: '50%', fontSize: '24px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, lineHeight: 1 }}>
+              <FaTimes />
+            </button>
+
+            {/* Song Title with Avatar */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#d4af37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontSize: '24px', fontWeight: 'bold', flexShrink: 0 }}>
+                ♪
+              </div>
+              <div>
+                <h3 style={{ margin: 0, color: '#fff', fontSize: '1.1rem', fontWeight: 700 }}>{modalSong.title}</h3>
+                <p style={{ margin: '0.25rem 0 0 0', color: '#999', fontSize: '0.85rem' }}>Mouhamed VJ</p>
+              </div>
+            </div>
+
+            {/* YouTube Video */}
+            {modalSong.youtubeUrl && (
+              <div style={{ marginBottom: '1.5rem', borderRadius: '0.75rem', overflow: 'hidden', aspectRatio: '16/9', background: '#000' }}>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${modalSong.youtubeUrl.split('v=')[1]?.split('&')[0]}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ display: 'block' }}
+                />
+              </div>
+            )}
+
+            {/* Fallback Message */}
+            <div style={{ textAlign: 'center', padding: '1rem', background: 'rgba(212, 175, 55, 0.1)', borderRadius: '0.5rem', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
+              <p style={{ color: '#999', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>
+                SI LA VIDÉO NE DÉMARRE PAS,<br />
+                <a href={modalSong.youtubeUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>CLIQUEZ ICI</a>
+              </p>
+            </div>
           </div>
         </div>
       )}
