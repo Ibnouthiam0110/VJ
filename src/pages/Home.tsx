@@ -91,7 +91,8 @@ const songsWithoutAlbum = songs
         </div>
         <div className="hero-content">
           <h1>Mouhamed VJ</h1>
-          <p className="tagline">Marabout de la Jeunesse</p>
+          <p className="tagline tagline-desktop">Marabout de la Jeunesse</p>
+          <p className="tagline tagline-mobile">PRINCE DE LA VILLE</p>
           <div className="hero-actions">
             <a href="#musique" className="hero-btn primary"><FaPlay style={{ marginRight: '0.5rem', display: 'inline' }} /> Écouter</a>
             <a href="#concerts" className="hero-btn"><FaCalendar style={{ marginRight: '0.5rem', display: 'inline' }} /> Agenda</a>
@@ -269,7 +270,7 @@ const songsWithoutAlbum = songs
             VIDÉO <span style={{ color: '#d4af37' }}>EXCLUSIVE</span>
           </h2>
         </div>
-        <div style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div className="video-container" style={{ maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
           {gallery?.filter((m: any) => m.type === 'video')?.slice(0, 1).map((video: any) => {
             const getYoutubeId = (url: string) => {
               if (url.includes('watch?v=')) return url.split('watch?v=')[1].split('&')[0];
@@ -278,16 +279,17 @@ const songsWithoutAlbum = songs
             const youtubeId = getYoutubeId(video.url);
             const startTime = video.startTime || 0;
             return (
-              <div key={video.id} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                {/* TOP: DESCRIPTION */}
-                <div style={{ textAlign: 'center' }}>
+              <>
+                {/* DESCRIPTION */}
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                   <p style={{ color: '#999', fontSize: '1rem', marginBottom: '0', fontStyle: 'italic', lineHeight: 1.6 }}>
                     {video.description}
                   </p>
                 </div>
 
-                {/* CENTER: VIDEO BLOCK */}
-                <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden', border: '2px solid rgba(212, 175, 55, 0.3)', background: '#000', minHeight: '400px', aspectRatio: '16/9' }}>
+                {/* VIDEO PLAYER + INFO (2-column on desktop, 1-column on mobile) */}
+                <div key={video.id} className="video-container">
+                  <div className="video-player" style={{ position: 'relative' }}>
                   {!playingExclusiveVideo ? (
                     <div
                       style={{
@@ -316,8 +318,8 @@ const songsWithoutAlbum = songs
                   )}
                 </div>
 
-                {/* BOTTOM: INFO & BUTTONS */}
-                <div style={{ border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.75rem', background: 'rgba(212, 175, 55, 0.02)', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                {/* INFO SECTION */}
+                <div className="video-info" style={{ border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.75rem', background: 'rgba(212, 175, 55, 0.02)', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
                   <h3 style={{ color: '#fff', fontSize: '1.8rem', fontWeight: 700, margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '1px', lineHeight: 1.2 }}>
                     {video.title}
                   </h3>
@@ -333,7 +335,8 @@ const songsWithoutAlbum = songs
                     </button>
                   </div>
                 </div>
-              </div>
+                </div>
+              </>
             );
           })}
         </div>
