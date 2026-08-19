@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import BottomNav from './components/BottomNav'
 import Splash from './components/Splash'
 import Home from './pages/Home'
 import Bio from './pages/Bio'
@@ -46,6 +47,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <BottomNav />
       </BrowserRouter>
     </QueryClientProvider>
   )

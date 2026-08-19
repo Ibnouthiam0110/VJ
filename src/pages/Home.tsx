@@ -267,7 +267,7 @@ const songsWithoutAlbum = songs
             VIDÉO <span style={{ color: '#d4af37' }}>EXCLUSIVE</span>
           </h2>
         </div>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {gallery?.filter((m: any) => m.type === 'video')?.slice(0, 1).map((video: any) => {
             const getYoutubeId = (url: string) => {
               if (url.includes('watch?v=')) return url.split('watch?v=')[1].split('&')[0];
@@ -276,9 +276,16 @@ const songsWithoutAlbum = songs
             const youtubeId = getYoutubeId(video.url);
             const startTime = video.startTime || 0;
             return (
-              <div key={video.id} style={{ display: 'contents' }}>
-                {/* LEFT: VIDEO BLOCK */}
-                <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden', border: '2px solid rgba(212, 175, 55, 0.3)', background: '#000', minHeight: '500px' }}>
+              <div key={video.id} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                {/* TOP: DESCRIPTION */}
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ color: '#999', fontSize: '1rem', marginBottom: '0', fontStyle: 'italic', lineHeight: 1.6 }}>
+                    {video.description}
+                  </p>
+                </div>
+
+                {/* CENTER: VIDEO BLOCK */}
+                <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden', border: '2px solid rgba(212, 175, 55, 0.3)', background: '#000', minHeight: '400px', aspectRatio: '16/9' }}>
                   {!playingExclusiveVideo ? (
                     <div
                       style={{
@@ -291,7 +298,7 @@ const songsWithoutAlbum = songs
                       }}
                     >
                       <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)' }} onClick={() => setPlayingExclusiveVideo(true)}>
-                        <div style={{ width: '100px', height: '100px', background: '#d4af37', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontSize: '40px', fontWeight: 'bold', cursor: 'pointer' }}><FaPlay style={{ color: '#000' }} /></div>
+                        <div style={{ width: '80px', height: '80px', background: '#d4af37', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontSize: '35px', fontWeight: 'bold', cursor: 'pointer' }}><FaPlay style={{ color: '#000' }} /></div>
                       </div>
                     </div>
                   ) : (
@@ -307,22 +314,19 @@ const songsWithoutAlbum = songs
                   )}
                 </div>
 
-                {/* RIGHT: INFO BLOCK */}
-                <div style={{ border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.75rem', background: 'rgba(212, 175, 55, 0.02)', padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '500px' }}>
-                  <p style={{ color: '#999', fontSize: '0.9rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>
-                    {video.description}
-                  </p>
-                  <h3 style={{ color: '#fff', fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '1px', lineHeight: 1.2 }}>
+                {/* BOTTOM: INFO & BUTTONS */}
+                <div style={{ border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.75rem', background: 'rgba(212, 175, 55, 0.02)', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                  <h3 style={{ color: '#fff', fontSize: '1.8rem', fontWeight: 700, margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '1px', lineHeight: 1.2 }}>
                     {video.title}
                   </h3>
-                  <p style={{ color: '#d4af37', fontSize: '1rem', fontWeight: 600, margin: '0 0 2rem 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <p style={{ color: '#d4af37', fontSize: '0.95rem', fontWeight: 600, margin: '0 0 1.5rem 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                     {video.category}
                   </p>
-                  <div style={{ display: 'flex', gap: '1rem' }}>
-                    <button onClick={() => { setPlayingExclusiveVideo(true); setExclusiveVideoFullscreen(true); }} style={{ padding: '0.75rem 1.5rem', background: '#d4af37', color: '#000', border: 'none', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <button onClick={() => { setPlayingExclusiveVideo(true); setExclusiveVideoFullscreen(true); }} style={{ padding: '0.7rem 1.4rem', background: '#d4af37', color: '#000', border: 'none', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
                       <FaExpand /> PLEIN ÉCRAN
                     </button>
-                    <button onClick={() => setShowExclusiveShareModal(true)} style={{ padding: '0.75rem 1.5rem', background: 'transparent', color: '#d4af37', border: '2px solid #d4af37', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <button onClick={() => setShowExclusiveShareModal(true)} style={{ padding: '0.7rem 1.4rem', background: 'transparent', color: '#d4af37', border: '2px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
                       <FaShareAlt /> Partager
                     </button>
                   </div>
