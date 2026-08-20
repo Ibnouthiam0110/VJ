@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { getArtist, getAlbums, getBlogPosts, getConcerts, getGallery } from '../api'
 import '../styles/pages.css'
-import { FaSpotify, FaInstagram, FaYoutube, FaPlay, FaCalendar, FaTrophy, FaMask, FaGlobe, FaChartBar, FaFilm, FaStar, FaMedal, FaMobileAlt, FaMicrophone, FaFutbol, FaExpand, FaShareAlt, FaTimes, FaFacebook, FaComment, FaLink, FaLock, FaChevronLeft, FaChevronRight, FaShare, FaArrowUp } from 'react-icons/fa'
+import { FaSpotify, FaInstagram, FaYoutube, FaPlay, FaCalendar, FaFilm, FaStar, FaMedal, FaMobileAlt, FaMicrophone, FaFutbol, FaExpand, FaShareAlt, FaTimes, FaFacebook, FaComment, FaLink, FaLock, FaChevronLeft, FaChevronRight, FaShare, FaArrowUp } from 'react-icons/fa'
 import { SiSnapchat, SiTwitter } from 'react-icons/si'
-import DOMPurify from 'isomorphic-dompurify'
 import { useState, useEffect, useRef } from 'react'
 import { useBackgroundMusic } from '../hooks/useBackgroundMusic'
 import { useTranslation } from 'react-i18next'
@@ -21,7 +20,6 @@ export default function Home() {
   const [showExclusiveShareModal, setShowExclusiveShareModal] = useState(false)
   const galleryRef = useRef<HTMLDivElement>(null)
   const clipsRef = useRef<HTMLDivElement>(null)
-  const videoPlayerRef = useRef<HTMLDivElement>(null)
   const exclusiveRef = useRef<HTMLDivElement>(null)
   const [clipsToShow, setClipsToShow] = useState(6)
   const { toggleMusic, isPlaying: isHeroMusicPlaying } = useBackgroundMusic()
