@@ -867,7 +867,7 @@ const songsWithoutAlbum = songs
             backgroundColor: '#0a0a0a',
             borderRadius: '1.5rem',
             overflowY: 'auto',
-            maxWidth: '1000px',
+            maxWidth: '1300px',
             width: '100%',
             maxHeight: '90vh',
             position: 'relative',
@@ -908,7 +908,7 @@ const songsWithoutAlbum = songs
                 alt={selectedAlbum.title}
                 style={{
                   width: '100%',
-                  maxWidth: '300px',
+                  maxWidth: '350px',
                   aspectRatio: '1',
                   objectFit: 'cover',
                   borderRadius: '1rem',
@@ -943,7 +943,7 @@ const songsWithoutAlbum = songs
                       <div style={{ marginBottom: '1rem', maxWidth: '100%' }}>
                         <iframe
                           width="100%"
-                          height="80"
+                          height="220"
                           src={`https://www.youtube.com/embed/${selectedSong.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=0`}
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
