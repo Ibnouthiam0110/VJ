@@ -932,18 +932,18 @@ const songsWithoutAlbum = songs
 
             {/* RIGHT - SONGS LIST */}
             {selectedAlbum.songs && selectedAlbum.songs.length > 0 && (
-              <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
                 <h3 style={{ color: '#d4af37', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 1.5rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   Chansons ({selectedAlbum.songs.length})
                 </h3>
 
                 {selectedSong && (
-                  <>
+                  <div style={{ marginBottom: '1.5rem', flexShrink: 0 }}>
                     {selectedSong.youtubeUrl && (
-                      <div style={{ marginBottom: '1.5rem' }}>
+                      <div style={{ marginBottom: '1rem', maxWidth: '100%' }}>
                         <iframe
                           width="100%"
-                          height="140"
+                          height="80"
                           src={`https://www.youtube.com/embed/${selectedSong.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=0`}
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -955,21 +955,21 @@ const songsWithoutAlbum = songs
 
                     {selectedSong.lyrics && (
                       <div style={{
-                        marginBottom: '1rem',
-                        maxHeight: '200px',
-                        overflowY: 'scroll',
-                        padding: '1rem',
+                        maxHeight: '100px',
+                        overflowY: 'auto',
+                        padding: '0.75rem',
                         backgroundColor: 'rgba(212, 175, 55, 0.05)',
                         borderRadius: '0.5rem',
-                        border: '1px solid rgba(212, 175, 55, 0.2)'
+                        border: '1px solid rgba(212, 175, 55, 0.2)',
+                        fontSize: '0.75rem'
                       }} className="lyrics-scroll">
-                        <p style={{ color: '#999', fontSize: '0.7rem', textTransform: 'uppercase', margin: '0 0 0.75rem 0' }}>Paroles</p>
-                        <p style={{ color: '#ddd', fontSize: '0.85rem', lineHeight: '1.6', margin: 0, whiteSpace: 'pre-wrap' }}>
+                        <p style={{ color: '#999', fontSize: '0.65rem', textTransform: 'uppercase', margin: '0 0 0.5rem 0' }}>Paroles</p>
+                        <p style={{ color: '#ddd', fontSize: '0.75rem', lineHeight: '1.4', margin: 0, whiteSpace: 'pre-wrap' }}>
                           {selectedSong.lyrics}
                         </p>
                       </div>
                     )}
-                  </>
+                  </div>
                 )}
 
                 <div style={{
