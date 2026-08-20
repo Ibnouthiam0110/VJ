@@ -683,7 +683,7 @@ const songsWithoutAlbum = songs
         {gallery?.length > 0 ? (
           <>
             <div className="gallery-grid">
-              {(showAllGallery ? gallery?.filter((item: any) => item.type === 'photo') : gallery?.filter((item: any) => item.type === 'photo').slice(0, 3)).map((item: any) => (
+              {(showAllGallery ? gallery?.filter((item: any) => item.type === 'photo') : gallery?.filter((item: any) => item.type === 'photo').slice(0, 4)).map((item: any) => (
               <div key={item.id} className="gallery-item" onClick={() => setSelectedGalleryIdx(gallery.indexOf(item))} style={{ cursor: 'pointer' }}>
                 {item.youtubeUrl || item.url?.includes('youtu') ? (
                   <div style={{ width: '100%', height: '100%', backgroundColor: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', color: 'var(--secondary)' }}><FaFilm /></div>
@@ -866,10 +866,10 @@ const songsWithoutAlbum = songs
           <div style={{
             backgroundColor: '#0a0a0a',
             borderRadius: '1.5rem',
-            overflowY: 'scroll',
+            overflowY: 'auto',
             maxWidth: '1000px',
             width: '100%',
-            height: '650px',
+            maxHeight: '90vh',
             position: 'relative',
             boxShadow: '0 20px 80px rgba(212, 175, 55, 0.3)',
             display: 'flex',

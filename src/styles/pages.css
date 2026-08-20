@@ -690,19 +690,23 @@
   }
 
   .social-stat-card {
-    padding: 1.5rem 1rem !important;
+    padding: 1rem 0.75rem !important;
+  }
+
+  .social-stat-card .stat-icon {
+    font-size: 1.8rem !important;
   }
 
   .social-stat-card .stat-value {
-    font-size: 2rem !important;
+    font-size: 1.6rem !important;
   }
 
   .social-stat-card .stat-growth {
-    font-size: 0.9rem !important;
+    font-size: 0.8rem !important;
   }
 
   .social-stat-card .stat-platform {
-    font-size: 0.75rem !important;
+    font-size: 0.7rem !important;
   }
 }
 
@@ -3578,11 +3582,21 @@
   /* Exclusive video mobile - single column, smaller */
   .video-container {
     grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
   }
 
   .video-player {
     aspect-ratio: 16/9 !important;
-    min-height: 220px !important;
+    min-height: 280px !important;
+  }
+
+  .video-info h3 {
+    font-size: 1.3rem !important;
+  }
+
+  .video-subtitle {
+    font-size: 0.9rem !important;
   }
 
   .page h1 {
