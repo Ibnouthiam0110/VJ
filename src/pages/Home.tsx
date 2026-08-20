@@ -1,19 +1,19 @@
 import { useQuery } from '@tanstack/react-query'
 import { getArtist, getAlbums, getBlogPosts, getConcerts, getGallery } from '../api'
 import '../styles/pages.css'
-import { FaSpotify, FaInstagram, FaYoutube, FaPlay, FaCalendar, FaFilm, FaStar, FaMedal, FaMobileAlt, FaMicrophone, FaFutbol, FaExpand, FaShareAlt, FaTimes, FaFacebook, FaComment, FaLink, FaLock, FaChevronLeft, FaChevronRight, FaShare, FaArrowUp } from 'react-icons/fa'
+import { FaSpotify, FaInstagram, FaYoutube, FaPlay, FaCalendar, FaTrophy, FaMask, FaGlobe, FaChartBar, FaFilm, FaStar, FaMedal, FaMobileAlt, FaMicrophone, FaFutbol, FaExpand, FaShareAlt, FaTimes, FaFacebook, FaComment, FaLink, FaLock, FaChevronLeft, FaChevronRight, FaShare, FaArrowUp } from 'react-icons/fa'
 import { SiSnapchat, SiTwitter } from 'react-icons/si'
 import DOMPurify from 'isomorphic-dompurify'
 import { useState, useEffect, useRef } from 'react'
 import { useBackgroundMusic } from '../hooks/useBackgroundMusic'
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
+  const { t } = useTranslation()
   const [selectedAlbum, setSelectedAlbum] = useState<any>(null)
   const [selectedSong, setSelectedSong] = useState<any>(null)
   const [showBioModal, setShowBioModal] = useState(false)
   const [showShareModal, setShowShareModal] = useState(false)
-  const [showSongModal, setShowSongModal] = useState(false)
-  const [modalSong, setModalSong] = useState<any>(null)
   const [selectedGalleryIdx, setSelectedGalleryIdx] = useState<number | null>(null)
   const [showAllGallery, setShowAllGallery] = useState(false)
   const [playingExclusiveVideo, setPlayingExclusiveVideo] = useState(false)
@@ -21,6 +21,7 @@ export default function Home() {
   const [showExclusiveShareModal, setShowExclusiveShareModal] = useState(false)
   const galleryRef = useRef<HTMLDivElement>(null)
   const clipsRef = useRef<HTMLDivElement>(null)
+  const videoPlayerRef = useRef<HTMLDivElement>(null)
   const exclusiveRef = useRef<HTMLDivElement>(null)
   const [clipsToShow, setClipsToShow] = useState(6)
   const { toggleMusic, isPlaying: isHeroMusicPlaying } = useBackgroundMusic()
@@ -41,7 +42,7 @@ export default function Home() {
 
   const { data: artist } = useQuery({ queryKey: ['artist'], queryFn: () => getArtist() })
   const { data: albums } = useQuery({ queryKey: ['albums'], queryFn: () => getAlbums() })
-  const { data: songs } = useQuery({ queryKey: ['songs'], queryFn: () => fetch(`${import.meta.env.VITE_API_URL || 'https://mouhamed-vj-backend.onrender.com'}/api/songs?limit=100`).then(r => r.json()).then(d => d.data || []) })
+  const { data: songs } = useQuery({ queryKey: ['songs'], queryFn: () => fetch('http://localhost:3000/api/songs?limit=100').then(r => r.json()).then(d => d.data || []) })
   const { data: blog } = useQuery({ queryKey: ['blog'], queryFn: async () => getBlogPosts() })
   const { data: concerts } = useQuery({ queryKey: ['concerts'], queryFn: () => getConcerts() })
   const { data: gallery } = useQuery({ queryKey: ['gallery'], queryFn: () => getGallery() })
@@ -80,22 +81,21 @@ const songsWithoutAlbum = songs
         <div className="hero-image">
           <img
             src="/images/hero/mouhamed.jfif"
-            alt="Mouhamed VJ"
+            alt={t('hero.name')}
             onClick={toggleMusic}
             style={{ cursor: 'pointer' }}
-            title="Cliquez pour écouter la musique"
+            title={t('hero.click_to_listen')}
           />
           <div className="hero-image-indicator" onClick={toggleMusic}>
-            <FaPlay /> Cliquez pour écouter
+            <FaPlay /> {t('hero.click_text')}
           </div>
         </div>
         <div className="hero-content">
-          <h1>Mouhamed VJ</h1>
-          <p className="tagline tagline-desktop">Marabout de la Jeunesse</p>
-          <p className="tagline tagline-mobile">PRINCE DE LA VILLE</p>
+          <h1>{t('hero.name')}</h1>
+          <p className="tagline">{t('hero.tagline_desktop')}</p>
           <div className="hero-actions">
-            <a href="#musique" className="hero-btn primary"><FaPlay style={{ marginRight: '0.5rem', display: 'inline' }} /> Écouter</a>
-            <a href="#concerts" className="hero-btn"><FaCalendar style={{ marginRight: '0.5rem', display: 'inline' }} /> Agenda</a>
+            <a href="#musique" className="hero-btn primary"><FaPlay style={{ marginRight: '0.5rem', display: 'inline' }} /> {t('hero.listen_btn')}</a>
+            <a href="#concerts" className="hero-btn"><FaCalendar style={{ marginRight: '0.5rem', display: 'inline' }} /> {t('hero.agenda_btn')}</a>
           </div>
         </div>
       </section>
@@ -107,20 +107,14 @@ const songsWithoutAlbum = songs
             <img src="/images/VJ2.png" alt={artist?.name} className="bio-image-large" />
           </div>
           <div className="bio-content">
-            <p className="bio-label">BIOGRAPHIE</p>
-            <h1 className="bio-title">Mouhamed VJ</h1>
+            <p className="bio-label">{t('bio.label')}</p>
+            <h1 className="bio-title">{t('hero.name')}</h1>
             <div className="bio-paragraphs">
-              {artist?.bio ? (
-                <p>{artist.bio}</p>
-              ) : (
-                <>
-                  <p>Mouhamed VJ, prodige de la musique sénégalaise, commence à chanter dès l'âge de 13 ans. À 17 ans, il fait sensation avec son premier single, "Dans tes bras", qui rencontre un grand succès. Grâce à une audience déjà bien établie sur ses réseaux sociaux, il réussit à organiser un concert à guichets fermés avec seulement quelques titres à son actif.</p>
-                  <p>En 2022, il sort son premier EP intitulé "En Vrai" sous le label Hoside, consolidant ainsi sa présence sur la scène musicale sénégalaise. Il enchaîne ensuite les succès en remplissant les plus grandes scènes du pays, comme l'esplanade du Grand Théâtre de Dakar, le Canal Olympia et l'esplanade du Musée des Civilisations Noires.</p>
-                  <p>En 2023, VJ franchit une nouvelle étape en signant avec le label Rec 118 de Warner Music, en collaboration avec Hoside et BLZ. Avec plus de 90 millions de vues sur YouTube et des millions de streams, il s'impose comme une figure incontournable de la scène musicale sénégalaise.</p>
-                </>
-              )}
+              <p>{t('bio.default_para1')}</p>
+              <p>{t('bio.default_para2')}</p>
+              <p>{t('bio.default_para3')}</p>
             </div>
-            <button onClick={() => setShowBioModal(true)} className="btn btn-bio"><FaPlay style={{ marginRight: '0.5rem', display: 'inline' }} /> LIRE LA BIOGRAPHIE COMPLÈTE</button>
+            <button onClick={() => setShowBioModal(true)} className="btn btn-bio"><FaPlay style={{ marginRight: '0.5rem', display: 'inline' }} /> {t('bio.read_more')}</button>
           </div>
         </div>
       </section>
@@ -131,94 +125,94 @@ const songsWithoutAlbum = songs
 
           {/* PALMARÈS & DISTINCTIONS */}
           <div className="accomplishments-subsection">
-            <div className="section-label">SES ACCOMPLISSEMENTS</div>
-            <h2>PALMARÈS & <span className="highlight">DISTINCTIONS</span></h2>
+            <div className="section-label">{t('accomplishments.title')}</div>
+            <h2>{t('accomplishments.palmares_distinctions').split(' & ')[0]} & <span className="highlight">{t('accomplishments.palmares_distinctions').split(' & ')[1]}</span></h2>
 
             <div className="certifications-grid">
               <div className="certification-card">
                 <div className="certification-badge">
-                  <div className="badge-inner">PLATINE</div>
+                  <div className="badge-inner">{t('accomplishments.platinum')}</div>
                 </div>
-                <h4>Kaay Waay</h4>
-                <p>Single de Platine AMC</p>
+                <h4>{t('accomplishments.kaay_waay')}</h4>
+                <p>Single de {t('accomplishments.platinum')} AMC</p>
               </div>
 
               <div className="certification-card">
                 <div className="certification-badge">
-                  <div className="badge-inner">OR</div>
+                  <div className="badge-inner">{t('accomplishments.gold')}</div>
                 </div>
-                <h4>Ya Meun</h4>
-                <p>Disque d'Or AMC</p>
+                <h4>{t('accomplishments.ya_meun')}</h4>
+                <p>Disque d'{t('accomplishments.gold')} AMC</p>
               </div>
 
               <div className="certification-card">
                 <div className="certification-badge">
-                  <div className="badge-inner">100M+</div>
+                  <div className="badge-inner">{t('accomplishments.million_plus')}</div>
                 </div>
-                <h4>YouTube</h4>
-                <p>100 millions de vues</p>
+                <h4>{t('accomplishments.youtube')}</h4>
+                <p>{t('accomplishments.views_100m')}</p>
               </div>
 
               <div className="certification-card">
                 <div className="certification-badge">
-                  <div className="badge-inner">63M+</div>
+                  <div className="badge-inner">{t('accomplishments.kaay_waay_views')}</div>
                 </div>
-                <h4>Kaay Waay</h4>
-                <p>Record YouTube Sénégal</p>
+                <h4>{t('accomplishments.kaay_waay')}</h4>
+                <p>{t('accomplishments.youtube_record_senegal')}</p>
               </div>
             </div>
           </div>
 
           {/* RECORDS ET CERTIFICATIONS DÉTAIL */}
           <div className="accomplishments-subsection">
-            <h2>RECORDS & <span className="highlight">CERTIFICATIONS</span></h2>
+            <h2>{t('accomplishments.records_certifications').split(' & ')[0]} & <span className="highlight">{t('accomplishments.records_certifications').split(' & ')[1]}</span></h2>
 
             <div className="records-detail">
               <div className="record-item">
                 <div className="record-icon"><FaFilm /></div>
                 <div className="record-content">
-                  <h4>Record Historique YouTube</h4>
-                  <p>Son morceau Kaay Waay est le clip le plus vu de l'histoire pour un artiste solo sénégalais, cumulant plus de 63 millions de vues.</p>
+                  <h4>{t('accomplishments.youtube_record.title')}</h4>
+                  <p>{t('accomplishments.youtube_record.description')}</p>
                 </div>
               </div>
 
               <div className="record-item">
                 <div className="record-icon"><FaStar /></div>
                 <div className="record-content">
-                  <h4>Single de Platine AMC</h4>
-                  <p>Obtenu avec son tube incontournable Kaay Waay, faisant de lui le tout premier single sénégalais à atteindre cette certification.</p>
+                  <h4>{t('accomplishments.platinum_single.title')}</h4>
+                  <p>{t('accomplishments.platinum_single.description')}</p>
                 </div>
               </div>
 
               <div className="record-item">
                 <div className="record-icon"><FaMedal /></div>
                 <div className="record-content">
-                  <h4>Disque d'Or AMC</h4>
-                  <p>Obtenu grâce au succès de son titre Ya Meun, consolidant sa position de leader musical.</p>
+                  <h4>{t('accomplishments.gold_album.title')}</h4>
+                  <p>{t('accomplishments.gold_album.description')}</p>
                 </div>
               </div>
 
               <div className="record-item">
                 <div className="record-icon"><FaMobileAlt /></div>
                 <div className="record-content">
-                  <h4>Audience Digitale Impressionnante</h4>
-                  <p>Il cumule plus de 100 millions de vues sur sa chaîne YouTube officielle et rassemble des millions de streams sur toutes les plateformes.</p>
+                  <h4>{t('accomplishments.digital_audience.title')}</h4>
+                  <p>{t('accomplishments.digital_audience.description')}</p>
                 </div>
               </div>
 
               <div className="record-item">
                 <div className="record-icon"><FaMicrophone /></div>
                 <div className="record-content">
-                  <h4>Ambassadeur Dakar 2026</h4>
-                  <p>En juillet 2026, VJ a été officiellement nommé Ambassadeur des Jeux Olympiques de la Jeunesse (JOJ) Dakar 2026 par le comité d'organisation pour promouvoir l'événement auprès de la jeunesse.</p>
+                  <h4>{t('accomplishments.ambassador.title')}</h4>
+                  <p>{t('accomplishments.ambassador.description')}</p>
                 </div>
               </div>
 
               <div className="record-item">
                 <div className="record-icon"><FaFutbol /></div>
                 <div className="record-content">
-                  <h4>Performances Légendaires</h4>
-                  <p>Il détient des records de précocité en remplissant des esplanades massives à l'âge de 17-18 ans (Esplanade du Grand Théâtre de Dakar, Canal Olympia) et s'est produit à guichets fermés dans la salle mythique de La Cigale à Paris.</p>
+                  <h4>{t('accomplishments.legendary_performances.title')}</h4>
+                  <p>{t('accomplishments.legendary_performances.description')}</p>
                 </div>
               </div>
             </div>
@@ -232,10 +226,10 @@ const songsWithoutAlbum = songs
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div style={{ borderTop: '2px solid #d4af37', margin: '0 0 1rem 0' }}></div>
           <h2 style={{ fontSize: '3rem', fontWeight: 900, margin: 0, letterSpacing: '2px' }}>
-            VIDÉO <span style={{ color: '#d4af37' }}>EXCLUSIVE</span>
+            {t('exclusive.section_label').split(' ')[0]} <span style={{ color: '#d4af37' }}>{t('exclusive.section_label').split(' ')[1]}</span>
           </h2>
         </div>
-        <div className="video-container-wrapper" style={{ paddingBottom: '4rem' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
           {gallery?.filter((m: any) => m.type === 'video')?.slice(0, 1).map((video: any) => {
             const getYoutubeId = (url: string) => {
               if (url.includes('watch?v=')) return url.split('watch?v=')[1].split('&')[0];
@@ -244,17 +238,9 @@ const songsWithoutAlbum = songs
             const youtubeId = getYoutubeId(video.url);
             const startTime = video.startTime || 0;
             return (
-              <>
-                {/* DESCRIPTION */}
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <p style={{ color: '#999', fontSize: '1rem', marginBottom: '0', fontStyle: 'italic', lineHeight: 1.6 }}>
-                    {video.description}
-                  </p>
-                </div>
-
-                {/* VIDEO PLAYER + INFO (2-column on desktop, 1-column on mobile) */}
-                <div key={video.id} className="video-container">
-                  <div className="video-player" style={{ position: 'relative' }}>
+              <div key={video.id} style={{ display: 'contents' }}>
+                {/* LEFT: VIDEO BLOCK */}
+                <div style={{ position: 'relative', borderRadius: '0.75rem', overflow: 'hidden', border: '2px solid rgba(212, 175, 55, 0.3)', background: '#000', minHeight: '500px' }}>
                   {!playingExclusiveVideo ? (
                     <div
                       style={{
@@ -267,7 +253,7 @@ const songsWithoutAlbum = songs
                       }}
                     >
                       <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.2)' }} onClick={() => setPlayingExclusiveVideo(true)}>
-                        <div style={{ width: '80px', height: '80px', background: '#d4af37', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontSize: '35px', fontWeight: 'bold', cursor: 'pointer' }}><FaPlay style={{ color: '#000' }} /></div>
+                        <div style={{ width: '100px', height: '100px', background: '#d4af37', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontSize: '40px', fontWeight: 'bold', cursor: 'pointer' }}><FaPlay style={{ color: '#000' }} /></div>
                       </div>
                     </div>
                   ) : (
@@ -283,25 +269,27 @@ const songsWithoutAlbum = songs
                   )}
                 </div>
 
-                {/* INFO SECTION */}
-                <div className="video-info">
-                  <h3 style={{ color: '#fff', fontWeight: 700, margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                {/* RIGHT: INFO BLOCK */}
+                <div style={{ border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.75rem', background: 'rgba(212, 175, 55, 0.02)', padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '500px' }}>
+                  <p style={{ color: '#999', fontSize: '0.9rem', marginBottom: '1.5rem', fontStyle: 'italic' }}>
+                    {video.description}
+                  </p>
+                  <h3 style={{ color: '#fff', fontSize: '2rem', fontWeight: 700, margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '1px', lineHeight: 1.2 }}>
                     {video.title}
                   </h3>
-                  <p style={{ color: '#d4af37', fontSize: '0.95rem', fontWeight: 600, margin: '0 0 1.5rem 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <p style={{ color: '#d4af37', fontSize: '1rem', fontWeight: 600, margin: '0 0 2rem 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                     {video.category}
                   </p>
-                  <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                    <button onClick={() => { setPlayingExclusiveVideo(true); setExclusiveVideoFullscreen(true); }} style={{ padding: '0.7rem 1.4rem', background: '#d4af37', color: '#000', border: 'none', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
-                      <FaExpand /> PLEIN ÉCRAN
+                  <div style={{ display: 'flex', gap: '1rem' }}>
+                    <button onClick={() => { setPlayingExclusiveVideo(true); setExclusiveVideoFullscreen(true); }} style={{ padding: '0.75rem 1.5rem', background: '#d4af37', color: '#000', border: 'none', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <FaExpand /> {t('modal.fullscreen')}
                     </button>
-                    <button onClick={() => setShowExclusiveShareModal(true)} style={{ padding: '0.7rem 1.4rem', background: 'transparent', color: '#d4af37', border: '2px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
-                      <FaShareAlt /> Partager
+                    <button onClick={() => setShowExclusiveShareModal(true)} style={{ padding: '0.75rem 1.5rem', background: 'transparent', color: '#d4af37', border: '2px solid #d4af37', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <FaShareAlt /> {t('modal.share')}
                     </button>
                   </div>
                 </div>
-                </div>
-              </>
+              </div>
             );
           })}
         </div>
@@ -313,25 +301,25 @@ const songsWithoutAlbum = songs
           <button onClick={() => setShowExclusiveShareModal(false)} style={{ position: 'fixed', top: '80px', right: '50px', background: '#d4af37', border: 'none', color: '#000', width: '60px', height: '60px', borderRadius: '50%', fontSize: '40px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, lineHeight: 1 }}><FaTimes /></button>
           <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%)', border: '1px solid rgba(212, 175, 55, 0.2)', borderRadius: '0.8rem', padding: '2rem', maxWidth: '450px', textAlign: 'center', backdropFilter: 'blur(10px)' }} onClick={(e) => e.stopPropagation()}>
 
-            <h2 style={{ color: '#d4af37', fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.8rem 0', letterSpacing: '1px' }}>PARTAGER</h2>
+            <h2 style={{ color: '#d4af37', fontSize: '1.3rem', fontWeight: 700, margin: '0 0 0.8rem 0', letterSpacing: '1px' }}>{t('modal.share_video').toUpperCase()}</h2>
 
             <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', justifyContent: 'center' }}>
               <button onClick={() => { const url = window.location.href; window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank'); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.1)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', transition: 'all 0.3s', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <FaFacebook /> FB
+                <FaFacebook /> {t('share.facebook')}
               </button>
-              <button onClick={() => { const url = window.location.href; window.open(`https://wa.me/?text=${encodeURIComponent('Regarde cette vidéo exclusive: ' + url)}`, '_blank'); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.1)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <FaComment /> WA
+              <button onClick={() => { const url = window.location.href; window.open(`https://wa.me/?text=${encodeURIComponent(t('modal.share_with_friends') + ': ' + url)}`, '_blank'); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.1)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <FaComment /> {t('share.whatsapp')}
               </button>
-              <button onClick={() => { const url = window.location.href; window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent('Regarde cette vidéo exclusive!')}`, '_blank'); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.1)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <SiTwitter /> X
+              <button onClick={() => { const url = window.location.href; window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(t('modal.share_with_friends'))}`, '_blank'); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.1)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <SiTwitter /> {t('share.twitter')}
               </button>
-              <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert('✓ Lien copié'); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.2)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <FaLink /> Lien
+              <button onClick={() => { navigator.clipboard.writeText(window.location.href); alert(t('modal.share_video')); }} style={{ padding: '0.8rem 1.2rem', background: 'rgba(212, 175, 55, 0.2)', color: '#d4af37', border: '1px solid #d4af37', borderRadius: '0.4rem', fontWeight: 600, cursor: 'pointer', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <FaLink /> {t('share.copy_link')}
               </button>
             </div>
 
             <div style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(212, 175, 55, 0.15)', borderRadius: '0.4rem', padding: '0.8rem', fontSize: '0.75rem', color: '#999', wordBreak: 'break-all' }}>
-              {window.location.href}
+              {t('modal.exclusive_video_only')}
             </div>
           </div>
         </div>
@@ -364,7 +352,7 @@ const songsWithoutAlbum = songs
 
       {/* MUSIQUE/ALBUMS */}
       <section className="section" id="musique">
-        <h2>Discographie</h2>
+        <h2>{t('discography_section.title')}</h2>
         {albums?.length > 0 ? (
           <div className="grid">
             {albums.map((album: any) => (
@@ -377,29 +365,29 @@ const songsWithoutAlbum = songs
             ))}
           </div>
         ) : (
-          <p style={{ color: 'var(--secondary)', fontSize: '1.2rem' }}>Albums à venir...</p>
+          <p style={{ color: 'var(--secondary)', fontSize: '1.2rem' }}>{t('discography_section.upcoming')}</p>
         )}
       </section>
 
       {/* CLIPS & VIDÉOS */}
       {songsWithoutAlbum.length > 0 && (
         <section className="clips-section" id="clips" ref={clipsRef}>
-          <div className="clips-badge">DERNIÈRES SORTIES</div>
-          <h2>VIDÉOS & CLIPS <span className="clips-highlight">CLIPS</span></h2>
+          <div className="clips-badge">{t('clips_section.badge')}</div>
+          <h2>{t('clips_section.title').split(' CLIPS')[0]} <span className="clips-highlight">CLIPS</span></h2>
           <div className="gallery-grid">
             {songsWithoutAlbum.slice(0, clipsToShow).map((song: any) => {
               const youtubeId = song.youtubeUrl?.split('v=')[1]?.split('&')[0];
               const thumbnailUrl = youtubeId ? `https://img.youtube.com/vi/${youtubeId}/sddefault.jpg` : '/images/placeholder.png';
               return (
                 <div key={song.id} className="gallery-item" style={{ cursor: 'pointer' }} onClick={() => {
-                  setModalSong(song)
-                  setShowSongModal(true)
+                  setSelectedAlbum({ id: song.id, title: song.title, releaseDate: new Date(), songs: [song], coverImage: thumbnailUrl })
+                  setSelectedSong(song)
                 }}>
                   <img src={thumbnailUrl} alt={song.title} />
                   <div className="gallery-overlay">
                     <h3>{song.title}</h3>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                      <p>CLIP</p>
+                      <p>{t('clips_section.clip_label')}</p>
                       {song.releaseDate && <p style={{ fontSize: '0.9rem', color: 'var(--secondary)' }}>{new Date(song.releaseDate).getFullYear()}</p>}
                     </div>
                   </div>
@@ -423,7 +411,7 @@ const songsWithoutAlbum = songs
                     cursor: 'pointer'
                   }}
                 >
-                  Voir plus
+                  {t('clips_section.view_more')}
                 </button>
               )}
               {clipsToShow > 6 && (
@@ -445,7 +433,7 @@ const songsWithoutAlbum = songs
                     cursor: 'pointer'
                   }}
                 >
-                  Voir moins
+                  {t('clips_section.view_less')}
                 </button>
               )}
             </div>
@@ -499,8 +487,8 @@ const songsWithoutAlbum = songs
               <FaTimes />
             </button>
             <div style={{ fontSize: '2.5rem', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}><FaShare style={{ color: 'var(--secondary)' }} /></div>
-            <h3 style={{ color: 'white', fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: 700 }}>Partager la vidéo</h3>
-            <p style={{ color: '#aaa', marginBottom: '2rem' }}>Partagez cette exclusivité avec vos proches</p>
+            <h3 style={{ color: 'white', fontSize: '1.5rem', marginBottom: '0.5rem', fontWeight: 700 }}>{t('modal.share_video')}</h3>
+            <p style={{ color: '#aaa', marginBottom: '2rem' }}>{t('modal.share_with_friends')}</p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
               <button style={{
@@ -514,7 +502,7 @@ const songsWithoutAlbum = songs
                 fontSize: '1rem',
                 transition: 'all 0.3s ease'
               }} onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, '_blank')}>
-                f<br/>Facebook
+                f<br/>{t('share.facebook')}
               </button>
               <button style={{
                 background: '#25D366',
@@ -531,7 +519,7 @@ const songsWithoutAlbum = songs
                 alignItems: 'center',
                 gap: '0.5rem'
               }} onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(window.location.href)}`, '_blank')}>
-                <FaComment /><br/>WhatsApp
+                <FaComment /><br/>{t('share.whatsapp')}
               </button>
               <button style={{
                 background: '#1DA1F2',
@@ -548,7 +536,7 @@ const songsWithoutAlbum = songs
                 alignItems: 'center',
                 gap: '0.5rem'
               }} onClick={() => window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}`, '_blank')}>
-                <SiTwitter /><br/>Twitter
+                <SiTwitter /><br/>{t('share.twitter')}
               </button>
               <button style={{
                 background: 'var(--secondary)',
@@ -566,9 +554,9 @@ const songsWithoutAlbum = songs
                 gap: '0.5rem'
               }} onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                alert('Lien copié!');
+                alert(t('share.link_copied'));
               }}>
-                <FaLink /><br/>Copier
+                <FaLink /><br/>{t('share.copy_link')}
               </button>
             </div>
 
@@ -601,9 +589,9 @@ const songsWithoutAlbum = songs
                 fontSize: '0.85rem'
               }} onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
-                alert('Lien copié!');
+                alert(t('share.link_copied'));
               }}>
-                Copier
+                {t('share.copy_link')}
               </button>
             </div>
 
@@ -618,7 +606,7 @@ const songsWithoutAlbum = songs
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <FaLock /> Vidéo exclusive disponible uniquement sur ce site
+              <FaLock /> {t('modal.exclusive_video_only')}
             </div>
           </div>
         </div>
@@ -626,7 +614,7 @@ const songsWithoutAlbum = songs
 
       {/* CONCERTS */}
       <section className="concerts-section" id="concerts">
-        <h2 className="section-title-concerts">Tournées & Concerts à Venir</h2>
+        <h2 className="section-title-concerts">{t('concerts_section.title')}</h2>
         {concerts?.length > 0 ? (
           <>
             {/* Top section: Image + Title + Description */}
@@ -640,7 +628,7 @@ const songsWithoutAlbum = songs
 
               {/* Title and description */}
               <div className="concerts-info-section">
-                <h2>PRINCE DE LA VILLE<br /><span className="tour-gold">EUROPEAN</span> TOUR</h2>
+                <h2>{t('concerts_section.prince_tour')}</h2>
                 <div className="concerts-dates-list">
                   {concerts.length > 0 && (
                     <>
@@ -654,13 +642,13 @@ const songsWithoutAlbum = songs
             </div>
           </>
         ) : (
-          <p style={{ textAlign: 'center', color: 'var(--secondary)', fontSize: '1.2rem' }}>Concerts à venir...</p>
+          <p style={{ textAlign: 'center', color: 'var(--secondary)', fontSize: '1.2rem' }}>{t('concerts_section.upcoming')}</p>
         )}
       </section>
 
       {/* ACTUALITES */}
       <section className="section" id="actualites">
-        <h2>Actualités</h2>
+        <h2>{t('blog_section.title')}</h2>
         {(blog as any)?.data?.length > 0 ? (
           <div className="blog-grid">
             {(blog as any).data.map((post: any) => (
@@ -673,17 +661,17 @@ const songsWithoutAlbum = songs
             ))}
           </div>
         ) : (
-          <p>Actualités à venir...</p>
+          <p>{t('blog_section.upcoming')}</p>
         )}
       </section>
 
       {/* GALERIE */}
       <section className="section" id="galerie" ref={galleryRef}>
-        <h2>Galerie Photos & Vidéos</h2>
+        <h2>{t('gallery_section.title')}</h2>
         {gallery?.length > 0 ? (
           <>
             <div className="gallery-grid">
-              {(showAllGallery ? gallery?.filter((item: any) => item.type === 'photo') : gallery?.filter((item: any) => item.type === 'photo').slice(0, 4)).map((item: any) => (
+              {(showAllGallery ? gallery?.filter((item: any) => item.type === 'photo') : gallery?.filter((item: any) => item.type === 'photo').slice(0, 3)).map((item: any) => (
               <div key={item.id} className="gallery-item" onClick={() => setSelectedGalleryIdx(gallery.indexOf(item))} style={{ cursor: 'pointer' }}>
                 {item.youtubeUrl || item.url?.includes('youtu') ? (
                   <div style={{ width: '100%', height: '100%', backgroundColor: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', color: 'var(--secondary)' }}><FaFilm /></div>
@@ -719,14 +707,14 @@ const songsWithoutAlbum = songs
                   onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#d4a842')}
                   onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'var(--secondary)')}
                 >
-                  {showAllGallery ? '← Voir moins' : 'Voir plus →'}
+                  {showAllGallery ? t('gallery_lightbox.view_less') : t('gallery_lightbox.view_more')}
                 </button>
               </div>
             )}
 
           </>
         ) : (
-          <p>Galerie à venir...</p>
+          <p>{t('gallery_section.upcoming')}</p>
         )}
 
         {/* Lightbox */}
@@ -819,31 +807,31 @@ const songsWithoutAlbum = songs
 
       {/* SOCIAL STATS */}
       <section className="social-stats-section">
-        <h2>Statistiques</h2>
+        <h2>{t('stats_section.title')}</h2>
         <div className="social-stats-grid">
           <div className="social-stat-card">
             <FaSpotify className="stat-logo" />
-            <div className="stat-number">138K</div>
-            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />+12.5%</div>
-            <div className="stat-platform">SPOTIFY</div>
+            <div className="stat-number">{t('stats_section.spotify_followers')}</div>
+            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />{t('stats_section.spotify_growth')}</div>
+            <div className="stat-platform">{t('stats_section.spotify')}</div>
           </div>
           <div className="social-stat-card">
             <SiSnapchat className="stat-logo" />
-            <div className="stat-number">563K</div>
-            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />+18.3%</div>
-            <div className="stat-platform">SNAPCHAT</div>
+            <div className="stat-number">{t('stats_section.snapchat_followers')}</div>
+            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />{t('stats_section.snapchat_growth')}</div>
+            <div className="stat-platform">{t('stats_section.snapchat')}</div>
           </div>
           <div className="social-stat-card">
             <FaInstagram className="stat-logo" />
-            <div className="stat-number">623K</div>
-            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />+21.7%</div>
-            <div className="stat-platform">INSTAGRAM</div>
+            <div className="stat-number">{t('stats_section.instagram_followers')}</div>
+            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />{t('stats_section.instagram_growth')}</div>
+            <div className="stat-platform">{t('stats_section.instagram')}</div>
           </div>
           <div className="social-stat-card">
             <FaYoutube className="stat-logo" />
-            <div className="stat-number">974K</div>
-            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />+28.9%</div>
-            <div className="stat-platform">YOUTUBE</div>
+            <div className="stat-number">{t('stats_section.youtube_followers')}</div>
+            <div className="stat-growth"><FaArrowUp style={{ marginRight: '0.25rem', display: 'inline' }} />{t('stats_section.youtube_growth')}</div>
+            <div className="stat-platform">{t('stats_section.youtube')}</div>
           </div>
         </div>
       </section>
@@ -866,10 +854,10 @@ const songsWithoutAlbum = songs
           <div style={{
             backgroundColor: '#0a0a0a',
             borderRadius: '1.5rem',
-            overflowY: 'auto',
-            maxWidth: '1300px',
+            overflowY: 'scroll',
+            maxWidth: '900px',
             width: '100%',
-            maxHeight: '90vh',
+            height: '650px',
             position: 'relative',
             boxShadow: '0 20px 80px rgba(212, 175, 55, 0.3)',
             display: 'flex',
@@ -908,7 +896,7 @@ const songsWithoutAlbum = songs
                 alt={selectedAlbum.title}
                 style={{
                   width: '100%',
-                  maxWidth: '350px',
+                  maxWidth: '300px',
                   aspectRatio: '1',
                   objectFit: 'cover',
                   borderRadius: '1rem',
@@ -924,7 +912,7 @@ const songsWithoutAlbum = songs
 
               {selectedSong && (
                 <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(212, 175, 55, 0.2)', width: '100%', textAlign: 'center' }}>
-                  <p style={{ color: '#999', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.75rem 0' }}>EN LECTURE</p>
+                  <p style={{ color: '#999', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.75rem 0' }}>{t('music.now_playing')}</p>
                   <p style={{ color: '#d4af37', fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>{selectedSong.title}</p>
                 </div>
               )}
@@ -932,18 +920,18 @@ const songsWithoutAlbum = songs
 
             {/* RIGHT - SONGS LIST */}
             {selectedAlbum.songs && selectedAlbum.songs.length > 0 && (
-              <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+              <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 <h3 style={{ color: '#d4af37', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 1.5rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Chansons ({selectedAlbum.songs.length})
+                  {t('music.songs_count')} ({selectedAlbum.songs.length})
                 </h3>
 
                 {selectedSong && (
-                  <div style={{ marginBottom: '1.5rem', flexShrink: 0 }}>
+                  <>
                     {selectedSong.youtubeUrl && (
-                      <div style={{ marginBottom: '1rem', maxWidth: '100%' }}>
+                      <div style={{ marginBottom: '1.5rem' }}>
                         <iframe
                           width="100%"
-                          height="220"
+                          height="140"
                           src={`https://www.youtube.com/embed/${selectedSong.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=0`}
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -955,21 +943,21 @@ const songsWithoutAlbum = songs
 
                     {selectedSong.lyrics && (
                       <div style={{
-                        maxHeight: '100px',
-                        overflowY: 'auto',
-                        padding: '0.75rem',
+                        marginBottom: '1rem',
+                        maxHeight: '200px',
+                        overflowY: 'scroll',
+                        padding: '1rem',
                         backgroundColor: 'rgba(212, 175, 55, 0.05)',
                         borderRadius: '0.5rem',
-                        border: '1px solid rgba(212, 175, 55, 0.2)',
-                        fontSize: '0.75rem'
+                        border: '1px solid rgba(212, 175, 55, 0.2)'
                       }} className="lyrics-scroll">
-                        <p style={{ color: '#999', fontSize: '0.65rem', textTransform: 'uppercase', margin: '0 0 0.5rem 0' }}>Paroles</p>
-                        <p style={{ color: '#ddd', fontSize: '0.75rem', lineHeight: '1.4', margin: 0, whiteSpace: 'pre-wrap' }}>
+                        <p style={{ color: '#999', fontSize: '0.7rem', textTransform: 'uppercase', margin: '0 0 0.75rem 0' }}>{t('music.lyrics')}</p>
+                        <p style={{ color: '#ddd', fontSize: '0.85rem', lineHeight: '1.6', margin: 0, whiteSpace: 'pre-wrap' }}>
                           {selectedSong.lyrics}
                         </p>
                       </div>
                     )}
-                  </div>
+                  </>
                 )}
 
                 <div style={{
@@ -1015,70 +1003,24 @@ const songsWithoutAlbum = songs
         </div>
       )}
 
-      {/* SONG MODAL */}
-      {showSongModal && modalSong && (
-        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '1rem' }} onClick={() => setShowSongModal(false)}>
-          <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%)', border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '1rem', padding: '2rem', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto' }} onClick={(e) => e.stopPropagation()}>
-            {/* Close Button */}
-            <button onClick={() => setShowSongModal(false)} style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: '#d4af37', border: 'none', color: '#000', width: '40px', height: '40px', borderRadius: '50%', fontSize: '24px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, lineHeight: 1 }}>
-              <FaTimes />
-            </button>
-
-            {/* Song Title with Avatar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-              <div style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#d4af37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontSize: '24px', fontWeight: 'bold', flexShrink: 0 }}>
-                ♪
-              </div>
-              <div>
-                <h3 style={{ margin: 0, color: '#fff', fontSize: '1.1rem', fontWeight: 700 }}>{modalSong.title}</h3>
-                <p style={{ margin: '0.25rem 0 0 0', color: '#999', fontSize: '0.85rem' }}>Mouhamed VJ</p>
-              </div>
-            </div>
-
-            {/* YouTube Video */}
-            {modalSong.youtubeUrl && (
-              <div style={{ marginBottom: '1.5rem', borderRadius: '0.75rem', overflow: 'hidden', aspectRatio: '16/9', background: '#000' }}>
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${modalSong.youtubeUrl.split('v=')[1]?.split('&')[0]}`}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  style={{ display: 'block' }}
-                />
-              </div>
-            )}
-
-            {/* Fallback Message */}
-            <div style={{ textAlign: 'center', padding: '1rem', background: 'rgba(212, 175, 55, 0.1)', borderRadius: '0.5rem', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
-              <p style={{ color: '#999', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>
-                SI LA VIDÉO NE DÉMARRE PAS,<br />
-                <a href={modalSong.youtubeUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#d4af37', textDecoration: 'none', fontWeight: 600, cursor: 'pointer' }}>CLIQUEZ ICI</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* CONTACT SECTION */}
       <section className="section" id="contact" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-        <h2>NOUS <span style={{ color: '#d4af37' }}>CONTACTER</span></h2>
+        <h2>{t('contact.section_title').split(' ')[0]} <span style={{ color: '#d4af37' }}>{t('contact.section_title').split(' ')[1]}</span></h2>
         <div style={{ maxWidth: '600px', margin: '2rem auto', padding: '2rem', background: 'rgba(212, 175, 55, 0.05)', borderRadius: '0.75rem', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
           <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>
-              <label style={{ color: '#d4af37', display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Nom</label>
-              <input type="text" placeholder="Votre nom" style={{ width: '100%', padding: '0.75rem', background: '#1a1a1a', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.5rem', color: '#fff' }} />
+              <label style={{ color: '#d4af37', display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>{t('contact.name_label')}</label>
+              <input type="text" placeholder={t('contact.name_placeholder')} style={{ width: '100%', padding: '0.75rem', background: '#1a1a1a', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.5rem', color: '#fff' }} />
             </div>
             <div>
-              <label style={{ color: '#d4af37', display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Email</label>
-              <input type="email" placeholder="votre@email.com" style={{ width: '100%', padding: '0.75rem', background: '#1a1a1a', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.5rem', color: '#fff' }} />
+              <label style={{ color: '#d4af37', display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>{t('contact.email_label')}</label>
+              <input type="email" placeholder={t('contact.email_placeholder')} style={{ width: '100%', padding: '0.75rem', background: '#1a1a1a', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.5rem', color: '#fff' }} />
             </div>
             <div>
-              <label style={{ color: '#d4af37', display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>Message</label>
-              <textarea placeholder="Votre message..." rows={5} style={{ width: '100%', padding: '0.75rem', background: '#1a1a1a', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.5rem', color: '#fff', fontFamily: 'inherit' }} />
+              <label style={{ color: '#d4af37', display: 'block', marginBottom: '0.5rem', fontWeight: 600 }}>{t('contact.message_label')}</label>
+              <textarea placeholder={t('contact.message_placeholder')} rows={5} style={{ width: '100%', padding: '0.75rem', background: '#1a1a1a', border: '1px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.5rem', color: '#fff', fontFamily: 'inherit' }} />
             </div>
-            <button type="submit" style={{ padding: '0.75rem 2rem', background: '#d4af37', color: '#000', border: 'none', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase' }}>Envoyer</button>
+            <button type="submit" style={{ padding: '0.75rem 2rem', background: '#d4af37', color: '#000', border: 'none', borderRadius: '0.5rem', fontWeight: 600, cursor: 'pointer', textTransform: 'uppercase' }}>{t('contact.submit')}</button>
           </form>
         </div>
       </section>
@@ -1127,19 +1069,11 @@ const songsWithoutAlbum = songs
               <FaTimes />
             </button>
 
-            <h2 style={{ color: '#d4af37', fontSize: '2rem', marginBottom: '1.5rem', marginTop: 0 }}>BIOGRAPHIE</h2>
+            <h2 style={{ color: '#d4af37', fontSize: '2rem', marginBottom: '1.5rem', marginTop: 0 }}>{t('bio.modal_title')}</h2>
             <div style={{ color: '#fff', lineHeight: '1.8', fontSize: '1rem' }}>
-              {artist?.bio ? (
-                <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(artist.bio) }} />
-              ) : (
-                <>
-                  <p>Mouhamed VJ, prodige de la musique sénégalaise, commence à chanter dès l'âge de 13 ans. À 17 ans, il fait sensation avec son premier single, "Dans tes bras", qui rencontre un grand succès. Grâce à une audience déjà bien établie sur ses réseaux sociaux, il réussit à organiser un concert à guichets fermés avec seulement quelques titres à son actif.</p>
-
-                  <p>En 2022, il sort son premier EP intitulé "En Vrai" sous le label Hoside, consolidant ainsi sa présence sur la scène musicale sénégalaise. Il enchaîne ensuite les succès en remplissant les plus grandes scènes du pays, comme l'esplanade du Grand Théâtre de Dakar, le Canal Olympia et l'esplanade du Musée des Civilisations Noires.</p>
-
-                  <p>En 2023, VJ franchit une nouvelle étape en signant avec le label Rec 118 de Warner Music, en collaboration avec Universal Music Group, renforçant ainsi sa position sur la scène musicale africaine et internationale. Depuis, il continue de repousser les limites de son art et de conquérir de nouveaux territoires musicaux.</p>
-                </>
-              )}
+              <p>{t('bio.default_para1')}</p>
+              <p>{t('bio.default_para2')}</p>
+              <p>{t('bio.default_para3')}</p>
             </div>
           </div>
         </div>

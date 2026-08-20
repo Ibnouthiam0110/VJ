@@ -1,0 +1,232 @@
+{
+  "header": {
+    "home": "Home",
+    "bio": "Biography",
+    "music": "Music",
+    "clips": "Clips",
+    "exclusive": "Exclusive",
+    "news": "News",
+    "gallery": "Gallery",
+    "concerts": "Concerts",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Mouhamed VJ",
+    "tagline_desktop": "Youth Master",
+    "tagline_mobile": "PRINCE OF THE CITY",
+    "click_to_listen": "Click to listen to music",
+    "click_text": "Click to listen",
+    "listen_btn": "Listen",
+    "agenda_btn": "Agenda"
+  },
+  "about": {
+    "title": "About",
+    "description": "Prince of the City. Discover my music, news and concerts."
+  },
+  "bio": {
+    "title": "BIOGRAPHY",
+    "label": "BIOGRAPHY",
+    "read_more": "READ FULL BIOGRAPHY",
+    "read_less": "Read Less",
+    "modal_title": "BIOGRAPHY",
+    "default_para1": "Mouhamed VJ, a prodigy of Senegalese music, started singing at the age of 13. At 17, he made a sensation with his first single, \"Dans tes bras\", which was a great success. Thanks to an already well-established audience on his social networks, he manages to organize a sold-out concert with only a few songs to his credit.",
+    "default_para2": "In 2022, he released his first EP titled \"En Vrai\" under the Hoside label, consolidating his presence on the Senegalese music scene. He then continues his success by filling the biggest stages in the country, such as the esplanade of the Dakar Grand Theater, Canal Olympia and the esplanade of the Museum of Black Civilizations.",
+    "default_para3": "In 2023, VJ takes a new step by signing with the Rec 118 label of Warner Music, in collaboration with Hoside and BLZ. With over 90 million views on YouTube and millions of streams, he establishes himself as an essential figure on the Senegalese music scene."
+  },
+  "accomplishments": {
+    "title": "HIS ACCOMPLISHMENTS",
+    "palmares_distinctions": "AWARDS & DISTINCTIONS",
+    "records_certifications": "RECORDS & CERTIFICATIONS",
+    "platinum": "PLATINUM",
+    "gold": "GOLD",
+    "million_plus": "100M+",
+    "record": "Record",
+    "official": "Official",
+    "emerging": "Emerging",
+    "international": "International",
+    "kaay_waay": "Kaay Waay",
+    "ya_meun": "Ya Meun",
+    "youtube": "YouTube",
+    "views_100m": "100 million views",
+    "kaay_waay_views": "63M+",
+    "youtube_record_senegal": "YouTube Record Senegal",
+    "youtube_record": {
+      "title": "Historic YouTube Record",
+      "description": "His song Kaay Waay is the most viewed clip in history for a solo Senegalese artist, accumulating over 63 million views."
+    },
+    "platinum_single": {
+      "title": "Platinum Single AMC",
+      "description": "Obtained with his hit song Kaay Waay, making him the very first Senegalese single to achieve this certification."
+    },
+    "gold_album": {
+      "title": "Gold Album AMC",
+      "description": "Obtained thanks to the success of his track Ya Meun, consolidating his position as a musical leader."
+    },
+    "digital_audience": {
+      "title": "Impressive Digital Audience",
+      "description": "He accumulates over 100 million views on his official YouTube channel and gathers millions of streams on all platforms."
+    },
+    "ambassador": {
+      "title": "Dakar 2026 Ambassador",
+      "description": "In July 2026, VJ was officially appointed Ambassador of the Youth Olympic Games (YOG) Dakar 2026 by the organizing committee to promote the event to young people."
+    },
+    "legendary_performances": {
+      "title": "Legendary Performances",
+      "description": "He holds records for precocity by filling massive esplanades at the age of 17-18 (Dakar Grand Theater Esplanade, Canal Olympia) and performed sold-out in the mythical La Cigale hall in Paris."
+    }
+  },
+  "exclusive": {
+    "title": "EXCLUSIVE VIDEO",
+    "section_label": "EXCLUSIVE CONTENT"
+  },
+  "music": {
+    "title": "Music",
+    "albums": "Albums",
+    "songs": "Songs",
+    "exclusive_songs": "Exclusive Songs",
+    "listen": "Listen",
+    "play": "Play",
+    "share": "Share",
+    "release_date": "Release Date",
+    "artist": "Artist",
+    "add_to_playlist": "Add to Playlist",
+    "view_more": "View More",
+    "now_playing": "NOW PLAYING",
+    "songs_count": "Songs",
+    "lyrics": "Lyrics"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "view_all": "View All",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "photos": "Photos"
+  },
+  "clips": {
+    "title": "Clips",
+    "view_more": "View More",
+    "exclusive_content": "Exclusive Content"
+  },
+  "news": {
+    "title": "News",
+    "blog_posts": "Articles",
+    "read_article": "Read Article"
+  },
+  "concerts": {
+    "title": "Concerts",
+    "upcoming_concerts": "Upcoming Concerts",
+    "date": "Date",
+    "location": "Location",
+    "ticket": "Ticket",
+    "buy_ticket": "Buy Ticket",
+    "no_upcoming": "No upcoming concerts at the moment"
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "send_message": "Send Message",
+    "name": "Name",
+    "subject": "Subject",
+    "get_in_touch": "Get In Touch",
+    "section_title": "GET IN TOUCH",
+    "name_label": "Name",
+    "name_placeholder": "Your name",
+    "email_label": "Email",
+    "email_placeholder": "your@email.com",
+    "message_label": "Message",
+    "message_placeholder": "Your message...",
+    "submit": "Send"
+  },
+  "footer": {
+    "about": "About",
+    "navigation": "Navigation",
+    "social_links": "Social Links",
+    "contact": "Contact",
+    "home": "Home",
+    "bio": "Biography",
+    "music": "Music",
+    "news": "News",
+    "copyright": "All rights reserved",
+    "contact_email": "Email: contact@mouhamedev.sn"
+  },
+  "bottom_nav": {
+    "home": "Home",
+    "albums": "Albums",
+    "bio": "Bio",
+    "concerts": "Concerts",
+    "contact": "Contact"
+  },
+  "share": {
+    "share": "Share",
+    "copy_link": "Copy Link",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "snapchat": "Snapchat",
+    "link_copied": "Link copied!"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "filter": "Filter"
+  },
+  "discography_section": {
+    "title": "Discography",
+    "upcoming": "Upcoming albums..."
+  },
+  "stats_section": {
+    "title": "Statistics",
+    "spotify": "SPOTIFY",
+    "spotify_followers": "138K",
+    "spotify_growth": "+12.5%",
+    "snapchat": "SNAPCHAT",
+    "snapchat_followers": "563K",
+    "snapchat_growth": "+18.3%",
+    "instagram": "INSTAGRAM",
+    "instagram_followers": "623K",
+    "instagram_growth": "+21.7%",
+    "youtube": "YOUTUBE",
+    "youtube_followers": "974K",
+    "youtube_growth": "+28.9%"
+  },
+  "modal": {
+    "share_video": "Share Video",
+    "share_with_friends": "Share this exclusive content with your friends",
+    "exclusive_video_only": "Exclusive video available only on this site",
+    "fullscreen": "FULLSCREEN",
+    "share": "Share"
+  },
+  "gallery_lightbox": {
+    "view_more": "View More →",
+    "view_less": "← View Less"
+  },
+  "blog_section": {
+    "title": "News",
+    "upcoming": "Upcoming news..."
+  },
+  "clips_section": {
+    "badge": "LATEST RELEASES",
+    "title": "VIDEOS & CLIPS",
+    "view_more": "View More",
+    "view_less": "View Less",
+    "clip_label": "CLIP"
+  },
+  "concerts_section": {
+    "title": "Tours & Upcoming Concerts",
+    "prince_tour": "PRINCE OF THE CITY EUROPEAN TOUR",
+    "upcoming": "Upcoming concerts..."
+  },
+  "gallery_section": {
+    "title": "Photo & Video Gallery",
+    "upcoming": "Gallery coming soon..."
+  }
+}

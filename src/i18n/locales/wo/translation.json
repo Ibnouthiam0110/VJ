@@ -1,0 +1,232 @@
+{
+  "header": {
+    "home": "Jëjëm",
+    "bio": "Jangal ay sunu",
+    "music": "Dëg",
+    "clips": "Clips",
+    "exclusive": "Suef",
+    "news": "Kabar",
+    "gallery": "Njar",
+    "concerts": "Koserti",
+    "contact": "Laaj"
+  },
+  "hero": {
+    "name": "Mouhamed VJ",
+    "tagline_desktop": "Rab yu Demba",
+    "tagline_mobile": "RÀGA KANAM",
+    "click_to_listen": "Bënn dëgg lëm sa dëg",
+    "click_text": "Bënn dëgg",
+    "listen_btn": "Dëgg",
+    "agenda_btn": "Kalanda"
+  },
+  "about": {
+    "title": "Jangal",
+    "description": "Ràga kanam. Ayib sa dëg, sa kabar ak sa koserti."
+  },
+  "bio": {
+    "title": "JANGAL AY SUNU",
+    "label": "JANGAL AY SUNU",
+    "read_more": "JANGAL KANAM BU JËM",
+    "read_less": "Jangal ginaaw",
+    "modal_title": "JANGAL AY SUNU",
+    "default_para1": "Mouhamed VJ, xeeweel bu duma nakkaar musiki Senegaal, jëkka dëgg ci ënd 13. Ci ënd 17, dina jëkka tëj ak ay dëkk bu tëj \"Dans tes bras\", buuba duma waleej naka. Jega audience bu gis nattali ci sa limu sosyal, dinga gis koserti gis sa kat ceet ak dëkk ginaaw rekk nañ am.",
+    "default_para2": "Ci 2022, dina jëkk EP bu tëj \"En Vrai\" ci label Hoside, buuba gis tëj am ci scène musiki Senegaal. Mu sa jëkka waleej, dina jëkk scène bu gërand yu jëm ci jambar, seetalu Esplanade Grand Theater Dakar, Canal Olympia ak Esplanade Musée yu Civilizations Noires.",
+    "default_para3": "Ci 2023, VJ dina teg etap bu baax bi jëkka ak label Rec 118 bu Warner Music, ci mballoo ak Hoside ak BLZ. Ak jëm 90 milyon waleej ci YouTube ak milyon streams, deñ am fu nekkaloo kat ci scene musiki Senegaal."
+  },
+  "accomplishments": {
+    "title": "AY NDAW BU GËRËM",
+    "palmares_distinctions": "PALMARÈS AK BANYE",
+    "records_certifications": "REKOOR AK TESTIMOONE",
+    "platinum": "PLATINE",
+    "gold": "WAX",
+    "million_plus": "100M+",
+    "record": "Rekoor",
+    "official": "Bi Rasmaan",
+    "emerging": "Bu Nattali",
+    "international": "Kanam Jëm",
+    "kaay_waay": "Kaay Waay",
+    "ya_meun": "Ya Meun",
+    "youtube": "YouTube",
+    "views_100m": "100 milyon waleej",
+    "kaay_waay_views": "63M+",
+    "youtube_record_senegal": "Rekoor YouTube Senegaal",
+    "youtube_record": {
+      "title": "Rekoor Bu Loo Nekka YouTube",
+      "description": "Ay dëkk Kaay Waay mooy clip bu nañu jëkka tëj gu jëm ci añ yu xeeweel solo senegaal, kiñ ci jëm 63 milyon bu waleej."
+    },
+    "platinum_single": {
+      "title": "Dëkk Platine AMC",
+      "description": "Gaas ak ay dëkk bappaleej Kaay Waay, buuba moo nangaale Senegaal bu diku ay singlew gana teg sertifikasyon bi."
+    },
+    "gold_album": {
+      "title": "Album Wax AMC",
+      "description": "Gaas ak somu ay dëkk Ya Meun, buuba gis tëj am ci xarala musiki kat."
+    },
+    "digital_audience": {
+      "title": "Audience Dijital Bu Gërand",
+      "description": "Dinga jëm 100 milyon waleej ci sa YouTube channel officiel ak dinga gis milyon streams ci xol platefoorme yu jëm."
+    },
+    "ambassador": {
+      "title": "Ambassadeur Dakar 2026",
+      "description": "Ci jüll 2026, VJ dina rasmaan noon Ambassadeur bu Jeux Olympiques bu Demba (JOJ) Dakar 2026 jega komitiyi nettali ndaw bi te rëbb ndaw yu demba."
+    },
+    "legendary_performances": {
+      "title": "Performance Bu Nekkaloo",
+      "description": "Deñ am rekoor bu jëkka ay jëm ki jëkka esplanade bu gërand ci ënd 17-18 (Esplanade Grand Theater Dakar, Canal Olympia) ak dugg nañu gis sa la salo bu nekkaloo La Cigale ci Paris."
+    }
+  },
+  "exclusive": {
+    "title": "WIDEWO SUEF",
+    "section_label": "KABAR SUEF"
+  },
+  "music": {
+    "title": "Dëg",
+    "albums": "Albums",
+    "songs": "Dëkk",
+    "exclusive_songs": "Dëkk Suef",
+    "listen": "Dëgg",
+    "play": "Seet",
+    "share": "Pàral",
+    "release_date": "Ran bu jéem",
+    "artist": "Xeeweel",
+    "add_to_playlist": "Rëdd ci listi",
+    "view_more": "Ayib bimmbim",
+    "now_playing": "SEET JËM",
+    "songs_count": "Dëkk",
+    "lyrics": "Riñ yi"
+  },
+  "gallery": {
+    "title": "Njar",
+    "view_all": "Ayib kanam",
+    "close": "Ŕet",
+    "previous": "Bii jëm",
+    "next": "Bii sua",
+    "photos": "Fotu"
+  },
+  "clips": {
+    "title": "Clips",
+    "view_more": "Ayib bimmbim",
+    "exclusive_content": "Kabar suef"
+  },
+  "news": {
+    "title": "Kabar",
+    "blog_posts": "Jangalooje",
+    "read_article": "Jangal jangal"
+  },
+  "concerts": {
+    "title": "Koserti",
+    "upcoming_concerts": "Koserti bu jëm",
+    "date": "Ran",
+    "location": "Jambar",
+    "ticket": "Tikeet",
+    "buy_ticket": "Gis tikeet",
+    "no_upcoming": "Koserti bu jëm ay amul saa jëm"
+  },
+  "contact": {
+    "title": "Laaj",
+    "email": "Email",
+    "message": "Xamul",
+    "send": "Nelaw",
+    "send_message": "Nelaw xamul",
+    "name": "Topp",
+    "subject": "Ay",
+    "get_in_touch": "Nelaw am ci ñu",
+    "section_title": "NELAW AM CI ÑU",
+    "name_label": "Topp",
+    "name_placeholder": "Sa topp",
+    "email_label": "Email",
+    "email_placeholder": "sa@email.com",
+    "message_label": "Xamul",
+    "message_placeholder": "Sa xamul...",
+    "submit": "Nelaw"
+  },
+  "footer": {
+    "about": "Jangal",
+    "navigation": "Yemtu",
+    "social_links": "Limu yu sosyal",
+    "contact": "Laaj",
+    "home": "Jëjëm",
+    "bio": "Jangal ay sunu",
+    "music": "Dëg",
+    "news": "Kabar",
+    "copyright": "Tebu yu sunu",
+    "contact_email": "Email: contact@mouhamedev.sn"
+  },
+  "bottom_nav": {
+    "home": "Jëjëm",
+    "albums": "Albums",
+    "bio": "Jangal",
+    "concerts": "Koserti",
+    "contact": "Laaj"
+  },
+  "share": {
+    "share": "Pàral",
+    "copy_link": "Noppi lien bi",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "snapchat": "Snapchat",
+    "link_copied": "Lien bi noppu!"
+  },
+  "common": {
+    "loading": "Nattali...",
+    "error": "Dimbali",
+    "retry": "Didital",
+    "close": "Ŕet",
+    "save": "Ndaw",
+    "cancel": "Ŕet",
+    "search": "Ceet",
+    "filter": "Yeulaaw"
+  },
+  "discography_section": {
+    "title": "Dëkk bu Jëm",
+    "upcoming": "Albums bu jëm..."
+  },
+  "stats_section": {
+    "title": "Njugemul",
+    "spotify": "SPOTIFY",
+    "spotify_followers": "138K",
+    "spotify_growth": "+12.5%",
+    "snapchat": "SNAPCHAT",
+    "snapchat_followers": "563K",
+    "snapchat_growth": "+18.3%",
+    "instagram": "INSTAGRAM",
+    "instagram_followers": "623K",
+    "instagram_growth": "+21.7%",
+    "youtube": "YOUTUBE",
+    "youtube_followers": "974K",
+    "youtube_growth": "+28.9%"
+  },
+  "modal": {
+    "share_video": "Pàral widewo bi",
+    "share_with_friends": "Pàral kabar suef bu nu ci ba yu rekk",
+    "exclusive_video_only": "Widewo suef disponible suuf bu bokk la",
+    "fullscreen": "ÉCRAN YU JËM",
+    "share": "Pàral"
+  },
+  "gallery_lightbox": {
+    "view_more": "Ayib bimmbim →",
+    "view_less": "← Ayib ginaaw"
+  },
+  "blog_section": {
+    "title": "Kabar",
+    "upcoming": "Kabar bu jëm..."
+  },
+  "clips_section": {
+    "badge": "SORTIES YU JËKKA",
+    "title": "WIDEWO & CLIPS",
+    "view_more": "Ayib bimmbim",
+    "view_less": "Ayib ginaaw",
+    "clip_label": "CLIP"
+  },
+  "concerts_section": {
+    "title": "Tur & Koserti bu Jëm",
+    "prince_tour": "RÀGA KANAM TOUR EWROP",
+    "upcoming": "Koserti bu jëm..."
+  },
+  "gallery_section": {
+    "title": "Galerî Fotu & Widewo",
+    "upcoming": "Galerî bu jëm..."
+  }
+}

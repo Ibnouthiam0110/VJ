@@ -1,0 +1,232 @@
+{
+  "header": {
+    "home": "Accueil",
+    "bio": "Biographie",
+    "music": "Musique",
+    "clips": "Clips",
+    "exclusive": "Exclusif",
+    "news": "Actualités",
+    "gallery": "Galerie",
+    "concerts": "Concerts",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Mouhamed VJ",
+    "tagline_desktop": "Marabout de la Jeunesse",
+    "tagline_mobile": "PRINCE DE LA VILLE",
+    "click_to_listen": "Cliquez pour écouter la musique",
+    "click_text": "Cliquez pour écouter",
+    "listen_btn": "Écouter",
+    "agenda_btn": "Agenda"
+  },
+  "about": {
+    "title": "À propos",
+    "description": "Prince de la ville. Découvrez ma musique, mes actualités et mes concerts."
+  },
+  "bio": {
+    "title": "BIOGRAPHIE",
+    "label": "BIOGRAPHIE",
+    "read_more": "LIRE LA BIOGRAPHIE COMPLÈTE",
+    "read_less": "Lire moins",
+    "modal_title": "BIOGRAPHIE",
+    "default_para1": "Mouhamed VJ, prodige de la musique sénégalaise, commence à chanter dès l'âge de 13 ans. À 17 ans, il fait sensation avec son premier single, \"Dans tes bras\", qui rencontre un grand succès. Grâce à une audience déjà bien établie sur ses réseaux sociaux, il réussit à organiser un concert à guichets fermés avec seulement quelques titres à son actif.",
+    "default_para2": "En 2022, il sort son premier EP intitulé \"En Vrai\" sous le label Hoside, consolidant ainsi sa présence sur la scène musicale sénégalaise. Il enchaîne ensuite les succès en remplissant les plus grandes scènes du pays, comme l'esplanade du Grand Théâtre de Dakar, le Canal Olympia et l'esplanade du Musée des Civilisations Noires.",
+    "default_para3": "En 2023, VJ franchit une nouvelle étape en signant avec le label Rec 118 de Warner Music, en collaboration avec Hoside et BLZ. Avec plus de 90 millions de vues sur YouTube et des millions de streams, il s'impose comme une figure incontournable de la scène musicale sénégalaise."
+  },
+  "accomplishments": {
+    "title": "SES ACCOMPLISSEMENTS",
+    "palmares_distinctions": "PALMARÈS & DISTINCTIONS",
+    "records_certifications": "RECORDS & CERTIFICATIONS",
+    "platinum": "PLATINE",
+    "gold": "OR",
+    "million_plus": "100M+",
+    "record": "Record",
+    "official": "Officiel",
+    "emerging": "Émergent",
+    "international": "International",
+    "kaay_waay": "Kaay Waay",
+    "ya_meun": "Ya Meun",
+    "youtube": "YouTube",
+    "views_100m": "100 millions de vues",
+    "kaay_waay_views": "63M+",
+    "youtube_record_senegal": "Record YouTube Sénégal",
+    "youtube_record": {
+      "title": "Record Historique YouTube",
+      "description": "Son morceau Kaay Waay est le clip le plus vu de l'histoire pour un artiste solo sénégalais, cumulant plus de 63 millions de vues."
+    },
+    "platinum_single": {
+      "title": "Single de Platine AMC",
+      "description": "Obtenu avec son tube incontournable Kaay Waay, faisant de lui le tout premier single sénégalais à atteindre cette certification."
+    },
+    "gold_album": {
+      "title": "Disque d'Or AMC",
+      "description": "Obtenu grâce au succès de son titre Ya Meun, consolidant sa position de leader musical."
+    },
+    "digital_audience": {
+      "title": "Audience Digitale Impressionnante",
+      "description": "Il cumule plus de 100 millions de vues sur sa chaîne YouTube officielle et rassemble des millions de streams sur toutes les plateformes."
+    },
+    "ambassador": {
+      "title": "Ambassadeur Dakar 2026",
+      "description": "En juillet 2026, VJ a été officiellement nommé Ambassadeur des Jeux Olympiques de la Jeunesse (JOJ) Dakar 2026 par le comité d'organisation pour promouvoir l'événement auprès de la jeunesse."
+    },
+    "legendary_performances": {
+      "title": "Performances Légendaires",
+      "description": "Il détient des records de précocité en remplissant des esplanades massives à l'âge de 17-18 ans (Esplanade du Grand Théâtre de Dakar, Canal Olympia) et s'est produit à guichets fermés dans la salle mythique de La Cigale à Paris."
+    }
+  },
+  "exclusive": {
+    "title": "VIDÉO EXCLUSIVE",
+    "section_label": "CONTENU EXCLUSIF"
+  },
+  "music": {
+    "title": "Musique",
+    "albums": "Albums",
+    "songs": "Chansons",
+    "exclusive_songs": "Chansons exclusives",
+    "listen": "Écouter",
+    "play": "Jouer",
+    "share": "Partager",
+    "release_date": "Date de sortie",
+    "artist": "Artiste",
+    "add_to_playlist": "Ajouter à la liste de lecture",
+    "view_more": "Voir plus",
+    "now_playing": "EN LECTURE",
+    "songs_count": "Chansons",
+    "lyrics": "Paroles"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "view_all": "Voir tout",
+    "close": "Fermer",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "photos": "Photos"
+  },
+  "clips": {
+    "title": "Clips",
+    "view_more": "Voir plus",
+    "exclusive_content": "Contenu exclusif"
+  },
+  "news": {
+    "title": "Actualités",
+    "blog_posts": "Articles",
+    "read_article": "Lire l'article"
+  },
+  "concerts": {
+    "title": "Concerts",
+    "upcoming_concerts": "Concerts à venir",
+    "date": "Date",
+    "location": "Lieu",
+    "ticket": "Billet",
+    "buy_ticket": "Acheter un billet",
+    "no_upcoming": "Pas de concerts prévus pour le moment"
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "send_message": "Envoyer un message",
+    "name": "Nom",
+    "subject": "Sujet",
+    "get_in_touch": "Nous contacter",
+    "section_title": "NOUS CONTACTER",
+    "name_label": "Nom",
+    "name_placeholder": "Votre nom",
+    "email_label": "Email",
+    "email_placeholder": "votre@email.com",
+    "message_label": "Message",
+    "message_placeholder": "Votre message...",
+    "submit": "Envoyer"
+  },
+  "footer": {
+    "about": "À propos",
+    "navigation": "Navigation",
+    "social_links": "Réseaux Sociaux",
+    "contact": "Contact",
+    "home": "Accueil",
+    "bio": "Biographie",
+    "music": "Musique",
+    "news": "Actualités",
+    "copyright": "Tous droits réservés",
+    "contact_email": "Email: contact@mouhamedev.sn"
+  },
+  "bottom_nav": {
+    "home": "Accueil",
+    "albums": "Albums",
+    "bio": "Bio",
+    "concerts": "Concerts",
+    "contact": "Contact"
+  },
+  "share": {
+    "share": "Partager",
+    "copy_link": "Copier le lien",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "snapchat": "Snapchat",
+    "link_copied": "Lien copié!"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "retry": "Réessayer",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "search": "Rechercher",
+    "filter": "Filtrer"
+  },
+  "discography_section": {
+    "title": "Discographie",
+    "upcoming": "Albums à venir..."
+  },
+  "stats_section": {
+    "title": "Statistiques",
+    "spotify": "SPOTIFY",
+    "spotify_followers": "138K",
+    "spotify_growth": "+12.5%",
+    "snapchat": "SNAPCHAT",
+    "snapchat_followers": "563K",
+    "snapchat_growth": "+18.3%",
+    "instagram": "INSTAGRAM",
+    "instagram_followers": "623K",
+    "instagram_growth": "+21.7%",
+    "youtube": "YOUTUBE",
+    "youtube_followers": "974K",
+    "youtube_growth": "+28.9%"
+  },
+  "modal": {
+    "share_video": "Partager la vidéo",
+    "share_with_friends": "Partagez cette exclusivité avec vos proches",
+    "exclusive_video_only": "Vidéo exclusive disponible uniquement sur ce site",
+    "fullscreen": "PLEIN ÉCRAN",
+    "share": "Partager"
+  },
+  "gallery_lightbox": {
+    "view_more": "Voir plus →",
+    "view_less": "← Voir moins"
+  },
+  "blog_section": {
+    "title": "Actualités",
+    "upcoming": "Actualités à venir..."
+  },
+  "clips_section": {
+    "badge": "DERNIÈRES SORTIES",
+    "title": "VIDÉOS & CLIPS",
+    "view_more": "Voir plus",
+    "view_less": "Voir moins",
+    "clip_label": "CLIP"
+  },
+  "concerts_section": {
+    "title": "Tournées & Concerts à Venir",
+    "prince_tour": "PRINCE DE LA VILLE EUROPEAN TOUR",
+    "upcoming": "Concerts à venir..."
+  },
+  "gallery_section": {
+    "title": "Galerie Photos & Vidéos",
+    "upcoming": "Galerie à venir..."
+  }
+}

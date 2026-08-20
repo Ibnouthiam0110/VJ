@@ -1,52 +1,70 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
+import i18n from '../i18n/config'
 import '../styles/Header.css'
 
 export default function Header() {
+  const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const closeMenu = () => setMenuOpen(false)
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    i18n.changeLanguage(e.target.value)
+  }
+
   return (
     <header className="header">
       <nav className="navbar">
-        <Link to="/" className="logo" onClick={closeMenu}>
-          <img src="/logo.png" alt="Mouhamed VJ" style={{ height: '70px', objectFit: 'contain' }} />
-        </Link>
+        <a href="/#accueil" className="logo">
+          <img src="/logo.png" alt="Mouhamed VJ" />
+        </a>
 
-        {/* Desktop Menu */}
-        <ul className="nav-menu">
-          <li><a href="/#accueil">Accueil</a></li>
-          <li><a href="/#biographie">Biographie</a></li>
-          <li><a href="/#musique">Musique</a></li>
-          <li><a href="/#clips">Clips</a></li>
-          <li><a href="/#exclusive">Exclusif</a></li>
-          <li><a href="/#actualites">Actualités</a></li>
-          <li><a href="/#galerie">Galerie</a></li>
-          <li><a href="/#concerts">Concerts</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-
-        {/* Hamburger Menu Button */}
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
 
-        {/* Mobile Menu */}
+        <ul className="nav-menu">
+          <li><a href="/#accueil" onClick={closeMenu}>{t('header.home')}</a></li>
+          <li><a href="/#biographie" onClick={closeMenu}>{t('header.bio')}</a></li>
+          <li><a href="/#musique" onClick={closeMenu}>{t('header.music')}</a></li>
+          <li><a href="/#clips" onClick={closeMenu}>{t('header.clips')}</a></li>
+          <li><a href="/#exclusive" onClick={closeMenu}>{t('header.exclusive')}</a></li>
+          <li><a href="/#actualites" onClick={closeMenu}>{t('header.news')}</a></li>
+          <li><a href="/#galerie" onClick={closeMenu}>{t('header.gallery')}</a></li>
+          <li><a href="/#concerts" onClick={closeMenu}>{t('header.concerts')}</a></li>
+          <li><a href="/#contact" onClick={closeMenu}>{t('header.contact')}</a></li>
+        </ul>
+
         {menuOpen && (
           <ul className="nav-menu-mobile">
-            <li><a href="/#accueil" onClick={closeMenu}>Accueil</a></li>
-            <li><a href="/#biographie" onClick={closeMenu}>Biographie</a></li>
-            <li><a href="/#musique" onClick={closeMenu}>Musique</a></li>
-            <li><a href="/#clips" onClick={closeMenu}>Clips</a></li>
-            <li><a href="/#exclusive" onClick={closeMenu}>Exclusif</a></li>
-            <li><a href="/#actualites" onClick={closeMenu}>Actualités</a></li>
-            <li><a href="/#galerie" onClick={closeMenu}>Galerie</a></li>
-            <li><a href="/#concerts" onClick={closeMenu}>Concerts</a></li>
-            <li><a href="/#contact" onClick={closeMenu}>Contact</a></li>
+            <li><a href="/#accueil" onClick={closeMenu}>{t('header.home')}</a></li>
+            <li><a href="/#biographie" onClick={closeMenu}>{t('header.bio')}</a></li>
+            <li><a href="/#musique" onClick={closeMenu}>{t('header.music')}</a></li>
+            <li><a href="/#clips" onClick={closeMenu}>{t('header.clips')}</a></li>
+            <li><a href="/#exclusive" onClick={closeMenu}>{t('header.exclusive')}</a></li>
+            <li><a href="/#actualites" onClick={closeMenu}>{t('header.news')}</a></li>
+            <li><a href="/#galerie" onClick={closeMenu}>{t('header.gallery')}</a></li>
+            <li><a href="/#concerts" onClick={closeMenu}>{t('header.concerts')}</a></li>
+            <li><a href="/#contact" onClick={closeMenu}>{t('header.contact')}</a></li>
           </ul>
         )}
+
+        <select
+          value={i18n.language}
+          onChange={handleLanguageChange}
+          className="language-select"
+        >
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+          <option value="wo">WO</option>
+        </select>
       </nav>
     </header>
   )
