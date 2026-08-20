@@ -88,7 +88,7 @@
   }
 
   .hero-content {
-    padding: 1.5rem 1.5rem 2rem 1.5rem;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
     z-index: 10;
     position: absolute;
     bottom: 0;
@@ -99,10 +99,25 @@
 
   .hero-content h1 {
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7) !important;
+    font-size: 3rem !important;
+    margin-bottom: 1rem !important;
   }
 
   .tagline {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-btn {
+    padding: 1rem 2rem !important;
+    font-size: 1rem !important;
   }
 }
 
@@ -605,6 +620,25 @@
   transform: translateX(4px);
 }
 
+/* Modal Album Mobile */
+@media (max-width: 600px) {
+  .modal-scroll {
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: 90vh !important;
+  }
+
+  .modal-scroll > div:first-of-type {
+    flex: 0 0 auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+  }
+
+  .modal-scroll > div:last-of-type {
+    flex: 1 !important;
+  }
+}
+
 /* Social Stats Section */
 .social-stats-section {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
@@ -651,7 +685,24 @@
 @media (max-width: 600px) {
   .social-stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .social-stat-card {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .social-stat-card .stat-value {
+    font-size: 2rem !important;
+  }
+
+  .social-stat-card .stat-growth {
+    font-size: 0.9rem !important;
+  }
+
+  .social-stat-card .stat-platform {
+    font-size: 0.75rem !important;
   }
 }
 
@@ -1855,6 +1906,37 @@
 
   .stats {
     gap: 2rem;
+  }
+
+  /* Accomplishments Mobile */
+  .accomplishments-section {
+    padding: 2rem 1.5rem !important;
+    margin: 0 -1.5rem !important;
+    width: calc(100% + 3rem) !important;
+  }
+
+  .accomplishments-subsection h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .certification-card {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .certification-badge {
+    width: 90px !important;
+    height: 90px !important;
+    min-width: 90px !important;
+    min-height: 90px !important;
+    border-radius: 50% !important;
+  }
+
+  .record-item {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .record-icon {
+    font-size: 1.8rem !important;
   }
 
   .grid {
