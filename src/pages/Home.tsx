@@ -169,41 +169,6 @@ const songsWithoutAlbum = songs
             </div>
           </div>
 
-          {/* DISTINCTIONS */}
-          <div className="accomplishments-subsection">
-            <h2>DISTINCTIONS</h2>
-
-            <div className="achievements-grid">
-              <div className="achievement-card">
-                <div className="achievement-icon"><FaTrophy /></div>
-                <h4>Ambassadeur Officiel</h4>
-                <p>Jeux Olympiques de la Jeunesse Dakar 2026</p>
-                <span className="achievement-badge">Officiel</span>
-              </div>
-
-              <div className="achievement-card">
-                <div className="achievement-icon"><FaMask /></div>
-                <h4>Phénomène Scénique</h4>
-                <p>Guichets fermés à 17-18 ans</p>
-                <span className="achievement-badge">Record</span>
-              </div>
-
-              <div className="achievement-card">
-                <div className="achievement-icon"><FaGlobe /></div>
-                <h4>Scène Internationale</h4>
-                <p>La Cigale Paris - Guichets fermés</p>
-                <span className="achievement-badge">International</span>
-              </div>
-
-              <div className="achievement-card">
-                <div className="achievement-icon"><FaChartBar /></div>
-                <h4>Artiste Émergent</h4>
-                <p>Meilleur nouvel artiste africain</p>
-                <span className="achievement-badge">Émergent</span>
-              </div>
-            </div>
-          </div>
-
           {/* RECORDS ET CERTIFICATIONS DÉTAIL */}
           <div className="accomplishments-subsection">
             <h2>RECORDS & <span className="highlight">CERTIFICATIONS</span></h2>
@@ -270,7 +235,7 @@ const songsWithoutAlbum = songs
             VIDÉO <span style={{ color: '#d4af37' }}>EXCLUSIVE</span>
           </h2>
         </div>
-        <div className="video-container" style={{ maxWidth: '1200px', margin: '0 auto', paddingBottom: '4rem' }}>
+        <div className="video-container-wrapper" style={{ paddingBottom: '4rem' }}>
           {gallery?.filter((m: any) => m.type === 'video')?.slice(0, 1).map((video: any) => {
             const getYoutubeId = (url: string) => {
               if (url.includes('watch?v=')) return url.split('watch?v=')[1].split('&')[0];
@@ -319,8 +284,8 @@ const songsWithoutAlbum = songs
                 </div>
 
                 {/* INFO SECTION */}
-                <div className="video-info" style={{ border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '0.75rem', background: 'rgba(212, 175, 55, 0.02)', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-                  <h3 style={{ color: '#fff', fontSize: '1.8rem', fontWeight: 700, margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '1px', lineHeight: 1.2 }}>
+                <div className="video-info">
+                  <h3 style={{ color: '#fff', fontWeight: 700, margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '1px' }}>
                     {video.title}
                   </h3>
                   <p style={{ color: '#d4af37', fontSize: '0.95rem', fontWeight: 600, margin: '0 0 1.5rem 0', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -902,7 +867,7 @@ const songsWithoutAlbum = songs
             backgroundColor: '#0a0a0a',
             borderRadius: '1.5rem',
             overflowY: 'scroll',
-            maxWidth: '900px',
+            maxWidth: '1000px',
             width: '100%',
             height: '650px',
             position: 'relative',
@@ -1053,7 +1018,7 @@ const songsWithoutAlbum = songs
       {/* SONG MODAL */}
       {showSongModal && modalSong && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000, padding: '1rem' }} onClick={() => setShowSongModal(false)}>
-          <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%)', border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '1rem', padding: '2rem', maxWidth: '500px', width: '100%', maxHeight: '90vh', overflow: 'auto' }} onClick={(e) => e.stopPropagation()}>
+          <div style={{ position: 'relative', background: 'linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%)', border: '2px solid rgba(212, 175, 55, 0.3)', borderRadius: '1rem', padding: '2rem', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto' }} onClick={(e) => e.stopPropagation()}>
             {/* Close Button */}
             <button onClick={() => setShowSongModal(false)} style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: '#d4af37', border: 'none', color: '#000', width: '40px', height: '40px', borderRadius: '50%', fontSize: '24px', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10, lineHeight: 1 }}>
               <FaTimes />
