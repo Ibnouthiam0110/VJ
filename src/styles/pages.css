@@ -674,15 +674,8 @@
   }
 
   .modal-scroll > div:last-of-type > div:nth-child(2) iframe {
-    height: 60px !important;
-  }
-
-  .modal-scroll > div:last-of-type > div:nth-child(2) > div {
+    height: 140px !important;
     margin-bottom: 0.75rem !important;
-  }
-
-  .modal-scroll > div:last-of-type > div:nth-child(2) iframe {
-    height: 150px !important;
   }
 
   .modal-scroll > div:last-of-type > div:nth-child(2) .lyrics-scroll {
@@ -699,10 +692,9 @@
   /* Liste chansons */
   .modal-scroll > div:last-of-type .songs-scroll {
     padding: 0 !important;
-    overflow-y: visible !important;
-    flex: none !important;
-    max-height: 500px !important;
     overflow-y: auto !important;
+    flex: 1 !important;
+    max-height: none !important;
   }
 
   .modal-scroll > div:last-of-type .songs-scroll > div {
@@ -2285,6 +2277,24 @@
 
   .exclusive-video-section h2 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .video-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+
+  .video-info {
+    min-height: auto;
+    order: 2;
+  }
+
+  .video-player {
+    min-height: 280px;
+    order: 1;
   }
 }
 
