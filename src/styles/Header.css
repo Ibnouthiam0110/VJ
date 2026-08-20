@@ -149,21 +149,21 @@
 
 @media (max-width: 480px) {
   body {
-    padding-top: 45px;
+    padding-top: 60px;
   }
 
   .navbar {
-    height: 45px;
-    padding: 0.15rem 0.5rem;
+    height: 60px;
+    padding: 0.25rem 1rem;
   }
 
   .nav-menu {
     gap: 0.5rem;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 
   .logo img {
-    height: 35px !important;
+    height: 55px !important;
   }
 
   .nav-menu a::after {

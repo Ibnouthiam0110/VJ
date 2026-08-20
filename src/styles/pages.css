@@ -685,28 +685,28 @@
 @media (max-width: 600px) {
   .social-stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 0 1rem;
+    gap: 0.75rem;
+    padding: 0 0.5rem;
   }
 
   .social-stat-card {
-    padding: 1rem 0.75rem !important;
+    padding: 0.75rem 0.5rem !important;
   }
 
   .social-stat-card .stat-icon {
-    font-size: 1.8rem !important;
+    font-size: 1.5rem !important;
   }
 
   .social-stat-card .stat-value {
-    font-size: 1.6rem !important;
+    font-size: 1.3rem !important;
   }
 
   .social-stat-card .stat-growth {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
   }
 
   .social-stat-card .stat-platform {
-    font-size: 0.7rem !important;
+    font-size: 0.65rem !important;
   }
 }
 
@@ -3456,12 +3456,12 @@
   }
 
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 3rem !important;
     letter-spacing: 0;
   }
 
   .tagline {
-    font-size: 1.2rem;
+    font-size: 1.3rem !important;
     letter-spacing: 1px;
   }
 
@@ -3530,8 +3530,11 @@
   }
 
   .certification-badge {
-    width: 60px;
-    height: 60px;
+    width: 90px !important;
+    height: 90px !important;
+    min-width: 90px !important;
+    min-height: 90px !important;
+    border-radius: 50% !important;
   }
 
   .badge-inner {
@@ -3596,7 +3599,31 @@
   }
 
   .video-subtitle {
-    font-size: 0.9rem !important;
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Reorder video elements on mobile: info before player */
+  .video-container {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+  }
+
+  .video-container-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .video-container-wrapper > div:first-child {
+    order: 2 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Modal Album scrolling fix */
+  .modal-scroll {
+    flex-direction: column !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
   }
 
   .page h1 {
