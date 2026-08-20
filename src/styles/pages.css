@@ -620,7 +620,7 @@
   transform: translateX(4px);
 }
 
-/* Modal Album Mobile */
+/* Modal Album Mobile - Option 3: Minimal header + full list */
 @media (max-width: 600px) {
   .modal-scroll {
     flex-direction: column !important;
@@ -630,47 +630,65 @@
   }
 
   .modal-scroll > div:first-of-type {
-    flex: 0 0 auto !important;
-    border-right: none !important;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
-    padding: 0.75rem !important;
-    max-height: 140px !important;
-    overflow: hidden !important;
-  }
-
-  .modal-scroll > div:first-of-type img {
-    max-width: 100px !important;
-    max-height: 100px !important;
-    margin-bottom: 0.5rem !important;
-  }
-
-  .modal-scroll > div:first-of-type h2 {
-    font-size: 1rem !important;
-    margin: 0 !important;
-  }
-
-  .modal-scroll > div:first-of-type p {
-    font-size: 0.7rem !important;
-    margin: 0 !important;
+    display: none !important;
   }
 
   .modal-scroll > div:last-of-type {
     flex: 1 !important;
-    min-height: 300px !important;
-    overflow-y: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
   }
 
-  .modal-scroll > div:last-of-type > div:first-child {
-    margin-bottom: 0.5rem !important;
+  .modal-scroll > div:last-of-type h3 {
+    position: sticky !important;
+    top: 0 !important;
+    padding: 1rem !important;
+    background: rgba(10, 10, 10, 0.95) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    z-index: 10 !important;
+    margin: 0 !important;
   }
 
-  .modal-scroll > div:last-of-type iframe {
+  .modal-scroll > div:last-of-type > div:nth-child(2) {
+    display: none !important;
+  }
+
+  .modal-scroll > div:last-of-type .songs-scroll {
+    padding: 0 !important;
+  }
+
+  .modal-scroll > div:last-of-type .songs-scroll > div {
+    padding: 1rem !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+    margin: 0 !important;
+  }
+
+  /* Video/Lyrics popup on mobile */
+  .modal-scroll > div:last-of-type > div:nth-child(2) {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 3.5rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(10, 10, 10, 0.98) !important;
+    z-index: 100 !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    padding: 1rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .modal-scroll > div:last-of-type > div:nth-child(2) > div {
+    margin: 0 !important;
+  }
+
+  .modal-scroll > div:last-of-type > div:nth-child(2) iframe {
     height: 60px !important;
   }
 
-  .modal-scroll > div:last-of-type > div > div:nth-child(2) {
-    max-height: 60px !important;
-    margin-bottom: 0.5rem !important;
+  .modal-scroll > div:last-of-type > div:nth-child(2) .lyrics-scroll {
+    max-height: 80px !important;
   }
 }
 
