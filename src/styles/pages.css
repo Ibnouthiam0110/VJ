@@ -671,30 +671,32 @@
   .modal-scroll > div:last-of-type > div:nth-child(2) {
     padding: 1rem !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    margin-bottom: 1rem !important;
   }
 
   .modal-scroll > div:last-of-type > div:nth-child(2) iframe {
-    height: 140px !important;
-    margin-bottom: 0.75rem !important;
+    height: 120px !important;
+    margin-bottom: 1rem !important;
   }
 
   .modal-scroll > div:last-of-type > div:nth-child(2) .lyrics-scroll {
-    max-height: 150px !important;
+    max-height: 120px !important;
   }
 
   /* Titre chansons */
   .modal-scroll > div:last-of-type h3 {
     padding: 1rem !important;
     margin: 0 !important;
+    padding-top: 0 !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
   }
 
-  /* Liste chansons */
+  /* Liste chansons - SCROLLABLE */
   .modal-scroll > div:last-of-type .songs-scroll {
     padding: 0 !important;
     overflow-y: auto !important;
     flex: 1 !important;
-    max-height: none !important;
+    min-height: 200px !important;
   }
 
   .modal-scroll > div:last-of-type .songs-scroll > div {
@@ -2132,7 +2134,8 @@
 }
 
 .video-container {
-  display: grid;
+  display: flex;
+  flex-direction: row;
   grid-template-columns: 2.2fr 1fr;
   gap: 2rem;
   max-width: 1300px;
@@ -2272,7 +2275,24 @@
 
 @media (max-width: 768px) {
   .video-container {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  .video-info {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    order: 1 !important;
+    border-right: none !important;
+  }
+
+  .video-player {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    flex-basis: 100% !important;
+    order: 2 !important;
   }
 
   .exclusive-video-section h2 {
@@ -2282,19 +2302,26 @@
 
 @media (max-width: 600px) {
   .video-container {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 2rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    grid-template-columns: none !important;
   }
 
   .video-info {
-    min-height: auto;
-    order: 2;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    order: 1 !important;
+    border-right: none !important;
+    min-height: auto !important;
+    padding: 1.5rem !important;
   }
 
   .video-player {
-    min-height: 280px;
-    order: 1;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    order: 2 !important;
+    min-height: 280px !important;
   }
 }
 
