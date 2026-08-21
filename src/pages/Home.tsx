@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getArtist, getAlbums, getBlogPosts, getConcerts, getGallery } from '../api'
+import { getArtist, getAlbums, getSongs, getBlogPosts, getConcerts, getGallery } from '../api'
 import '../styles/pages.css'
 import { FaSpotify, FaInstagram, FaYoutube, FaPlay, FaCalendar, FaFilm, FaStar, FaMedal, FaMobileAlt, FaMicrophone, FaFutbol, FaExpand, FaShareAlt, FaTimes, FaFacebook, FaComment, FaLink, FaLock, FaChevronLeft, FaChevronRight, FaShare, FaArrowUp } from 'react-icons/fa'
 import { SiSnapchat, SiTwitter } from 'react-icons/si'
@@ -40,7 +40,7 @@ export default function Home() {
 
   const { data: artist } = useQuery({ queryKey: ['artist'], queryFn: () => getArtist() })
   const { data: albums } = useQuery({ queryKey: ['albums'], queryFn: () => getAlbums() })
-  const { data: songs } = useQuery({ queryKey: ['songs'], queryFn: async () => { const res = await import('./api/client').then(m => m.apiClient.get('/songs?limit=100')); return res.data || [] } })
+  const { data: songs } = useQuery({ queryKey: ['songs'], queryFn: () => getSongs() })
   const { data: blog } = useQuery({ queryKey: ['blog'], queryFn: async () => getBlogPosts() })
   const { data: concerts } = useQuery({ queryKey: ['concerts'], queryFn: () => getConcerts() })
   const { data: gallery } = useQuery({ queryKey: ['gallery'], queryFn: () => getGallery() })
@@ -852,10 +852,10 @@ const songsWithoutAlbum = songs
           <div style={{
             backgroundColor: '#0a0a0a',
             borderRadius: '1.5rem',
-            overflowY: 'scroll',
-            maxWidth: '900px',
+            overflowY: 'auto',
+            maxWidth: '800px',
             width: '100%',
-            height: '650px',
+            maxHeight: '80vh',
             position: 'relative',
             boxShadow: '0 20px 80px rgba(212, 175, 55, 0.3)',
             display: 'flex',
@@ -887,38 +887,63 @@ const songsWithoutAlbum = songs
               <FaTimes />
             </button>
 
-            {/* LEFT - COVER & NOW PLAYING */}
-            <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '1px solid rgba(212, 175, 55, 0.2)' }}>
-              <img
-                src={selectedAlbum.coverImage}
-                alt={selectedAlbum.title}
-                style={{
-                  width: '100%',
-                  maxWidth: '300px',
-                  aspectRatio: '1',
-                  objectFit: 'cover',
-                  borderRadius: '1rem',
-                  marginBottom: '2rem',
-                  boxShadow: '0 10px 40px rgba(212, 175, 55, 0.2)'
-                }}
-              />
+            {selectedAlbum.songs && selectedAlbum.songs.length === 1 ? (
+              // CLIP LAYOUT - Video centered
+              <div style={{ width: '100%', display: 'flex', flexDirection: 'column', padding: '2rem' }}>
+                <h2 style={{ margin: '0 0 1.5rem 0', color: '#d4af37', fontSize: '1.3rem', fontWeight: 700, textAlign: 'center' }}>{selectedAlbum.title}</h2>
 
-              <h2 style={{ margin: '0 0 0.5rem 0', color: '#d4af37', fontSize: '1.5rem', fontWeight: 700, textAlign: 'center' }}>{selectedAlbum.title}</h2>
-              <p style={{ color: '#999', marginBottom: '1.5rem', fontSize: '0.85rem', textAlign: 'center' }}>
-                {new Date(selectedAlbum.releaseDate).getFullYear()}
-              </p>
+                {selectedSong && selectedSong.youtubeUrl && (
+                  <div style={{ marginBottom: '1.5rem', width: '100%' }}>
+                    <iframe
+                      width="100%"
+                      height="300"
+                      src={`https://www.youtube.com/embed/${selectedSong.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=1`}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      style={{ borderRadius: '0.5rem' }}
+                    />
+                  </div>
+                )}
 
-              {selectedSong && (
-                <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(212, 175, 55, 0.2)', width: '100%', textAlign: 'center' }}>
-                  <p style={{ color: '#999', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.75rem 0' }}>{t('music.now_playing')}</p>
-                  <p style={{ color: '#d4af37', fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>{selectedSong.title}</p>
+                <p style={{ textAlign: 'center', color: '#d4af37', fontSize: '0.85rem', marginTop: '1rem' }}>
+                  🎬 SI LA VIDÉO NE DÉMARRE PAS, CLIQUEZ ICI
+                </p>
+              </div>
+            ) : (
+              <>
+                {/* LEFT - COVER & NOW PLAYING (Albums) */}
+                <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '1px solid rgba(212, 175, 55, 0.2)' }}>
+                  <img
+                    src={selectedAlbum.coverImage}
+                    alt={selectedAlbum.title}
+                    style={{
+                      width: '100%',
+                      maxWidth: '300px',
+                      aspectRatio: '1',
+                      objectFit: 'cover',
+                      borderRadius: '1rem',
+                      marginBottom: '2rem',
+                      boxShadow: '0 10px 40px rgba(212, 175, 55, 0.2)'
+                    }}
+                  />
+
+                  <h2 style={{ margin: '0 0 0.5rem 0', color: '#d4af37', fontSize: '1.5rem', fontWeight: 700, textAlign: 'center' }}>{selectedAlbum.title}</h2>
+                  <p style={{ color: '#999', marginBottom: '1.5rem', fontSize: '0.85rem', textAlign: 'center' }}>
+                    {new Date(selectedAlbum.releaseDate).getFullYear()}
+                  </p>
+
+                  {selectedSong && (
+                    <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(212, 175, 55, 0.2)', width: '100%', textAlign: 'center' }}>
+                      <p style={{ color: '#999', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', margin: '0 0 0.75rem 0' }}>{t('music.now_playing')}</p>
+                      <p style={{ color: '#d4af37', fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>{selectedSong.title}</p>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
 
-            {/* RIGHT - SONGS LIST */}
-            {selectedAlbum.songs && selectedAlbum.songs.length > 0 && (
-              <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                {/* RIGHT - SONGS LIST (Albums) */}
+                {selectedAlbum.songs && selectedAlbum.songs.length > 0 && (
+                  <div style={{ flex: '0 0 50%', padding: '2rem', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 <h3 style={{ color: '#d4af37', fontSize: '1.1rem', fontWeight: 700, margin: '0 0 1.5rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   {t('music.songs_count')} ({selectedAlbum.songs.length})
                 </h3>
@@ -930,7 +955,7 @@ const songsWithoutAlbum = songs
                         <iframe
                           width="100%"
                           height="140"
-                          src={`https://www.youtube.com/embed/${selectedSong.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=0`}
+                          src={`https://www.youtube.com/embed/${selectedSong.youtubeUrl.split('v=')[1]?.split('&')[0]}?autoplay=1`}
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
@@ -996,6 +1021,8 @@ const songsWithoutAlbum = songs
                   ))}
                 </div>
               </div>
+            )}
+              </>
             )}
           </div>
         </div>
