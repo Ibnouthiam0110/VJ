@@ -632,11 +632,11 @@
   }
 
   .video-container > div > div:first-child {
-    order: 2 !important;
+    order: 1 !important;
   }
 
   .video-container > div > div:last-child {
-    order: 1 !important;
+    order: 2 !important;
     min-height: auto !important;
     padding: 2rem !important;
   }
@@ -657,62 +657,69 @@
 
   .modal-scroll {
     flex-direction: column !important;
-    max-height: 90vh !important;
+    max-height: 85vh !important;
+    height: 85vh !important;
     overflow-y: auto !important;
     padding: 0 !important;
   }
 
-  /* LEFT - Couverture */
-  .modal-scroll > div:first-of-type {
+  /* LEFT - Couverture (order: 1 for top) */
+  .modal-scroll > div:nth-of-type(1) {
     flex: 0 0 auto !important;
+    width: 100% !important;
     border: none !important;
     padding: 1.5rem 1rem !important;
     text-align: center !important;
+    order: 1 !important;
   }
 
-  .modal-scroll > div:first-of-type img {
+  .modal-scroll > div:nth-of-type(1) img {
     width: 180px !important;
     height: 180px !important;
     margin-bottom: 1rem !important;
   }
 
-  .modal-scroll > div:first-of-type h2 {
+  .modal-scroll > div:nth-of-type(1) h2 {
     font-size: 1.3rem !important;
     margin: 0 0 0.5rem !important;
   }
 
-  .modal-scroll > div:first-of-type p {
+  .modal-scroll > div:nth-of-type(1) p {
     font-size: 0.9rem !important;
     margin: 0 !important;
     color: #999 !important;
   }
 
-  /* RIGHT - Vidéo, Paroles, Chansons */
-  .modal-scroll > div:last-of-type {
+  /* RIGHT - Vidéo, Paroles, Chansons (order: 2 for bottom) */
+  .modal-scroll > div:nth-of-type(2) {
     flex: 1 !important;
     width: 100% !important;
-    padding: 0 !important;
+    padding: 1rem !important;
     border: none !important;
+    order: 2 !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   /* Vidéo et paroles */
-  .modal-scroll > div:last-of-type > div:nth-child(2) {
+  .modal-scroll > div:nth-of-type(2) > div:nth-child(2) {
     padding: 1rem !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
     margin-bottom: 1rem !important;
   }
 
-  .modal-scroll > div:last-of-type > div:nth-child(2) iframe {
+  .modal-scroll > div:nth-of-type(2) > div:nth-child(2) iframe {
     height: 120px !important;
     margin-bottom: 1rem !important;
   }
 
-  .modal-scroll > div:last-of-type > div:nth-child(2) .lyrics-scroll {
+  .modal-scroll > div:nth-of-type(2) > div:nth-child(2) .lyrics-scroll {
     max-height: 120px !important;
   }
 
   /* Titre chansons */
-  .modal-scroll > div:last-of-type h3 {
+  .modal-scroll > div:nth-of-type(2) h3 {
     padding: 1rem !important;
     margin: 0 !important;
     padding-top: 0 !important;
@@ -720,14 +727,14 @@
   }
 
   /* Liste chansons - SCROLLABLE */
-  .modal-scroll > div:last-of-type .songs-scroll {
+  .modal-scroll > div:nth-of-type(2) .songs-scroll {
     padding: 0 !important;
     overflow-y: auto !important;
     flex: 1 !important;
     min-height: 200px !important;
   }
 
-  .modal-scroll > div:last-of-type .songs-scroll > div {
+  .modal-scroll > div:nth-of-type(2) .songs-scroll > div {
     padding: 1rem !important;
     border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
   }
