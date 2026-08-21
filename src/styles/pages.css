@@ -2134,8 +2134,7 @@
 }
 
 .video-container {
-  display: flex;
-  flex-direction: row;
+  display: grid;
   grid-template-columns: 2.2fr 1fr;
   gap: 2rem;
   max-width: 1300px;
@@ -2276,25 +2275,8 @@
 @media (max-width: 768px) {
   .video-container {
     display: flex !important;
-    flex-direction: column !important;
+    flex-direction: column-reverse !important;
     gap: 2rem !important;
-    max-width: 100% !important;
-  }
-
-  .video-info {
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    order: 1 !important;
-    border-right: none !important;
-    padding: 1.5rem !important;
-  }
-
-  .video-player {
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    order: 2 !important;
-    min-height: 250px !important;
-    aspect-ratio: 16/9 !important;
   }
 
   .exclusive-video-section h2 {
