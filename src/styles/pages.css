@@ -2278,21 +2278,23 @@
     display: flex !important;
     flex-direction: column !important;
     gap: 2rem !important;
+    max-width: 100% !important;
   }
 
   .video-info {
-    flex: 0 0 100% !important;
+    flex: 0 0 auto !important;
     width: 100% !important;
-    flex-basis: 100% !important;
     order: 1 !important;
     border-right: none !important;
+    padding: 1.5rem !important;
   }
 
   .video-player {
-    flex: 0 0 100% !important;
+    flex: 0 0 auto !important;
     width: 100% !important;
-    flex-basis: 100% !important;
     order: 2 !important;
+    min-height: 250px !important;
+    aspect-ratio: 16/9 !important;
   }
 
   .exclusive-video-section h2 {
