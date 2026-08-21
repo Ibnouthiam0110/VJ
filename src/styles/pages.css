@@ -21,7 +21,7 @@
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: var(--white);
+  background-color: #0a0a0a;
   border-radius: 0;
 }
 
@@ -627,6 +627,34 @@
 
 /* Modal Album Mobile - Simple vertical scroll */
 @media (max-width: 600px) {
+  .video-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .video-container > div > div:first-child {
+    order: 2 !important;
+  }
+
+  .video-container > div > div:last-child {
+    order: 1 !important;
+    min-height: auto !important;
+    padding: 2rem !important;
+  }
+
+  .video-container > div > div:last-child h3 {
+    font-size: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .video-container > div > div:last-child > div {
+    gap: 0.75rem !important;
+  }
+
+  .video-container > div > div:last-child button {
+    padding: 0.65rem 1.2rem !important;
+    font-size: 0.85rem !important;
+  }
+
   .modal-scroll {
     flex-direction: column !important;
     max-height: 90vh !important;
@@ -2273,38 +2301,10 @@
 }
 
 @media (max-width: 768px) {
-  .video-container {
-    display: flex !important;
-    flex-direction: column-reverse !important;
-    gap: 2rem !important;
-  }
-
   .exclusive-video-section h2 {
     font-size: 2rem;
   }
 }
-
-@media (max-width: 600px) {
-  .video-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 2rem !important;
-    grid-template-columns: none !important;
-  }
-
-  .video-info {
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    order: 1 !important;
-    border-right: none !important;
-    min-height: auto !important;
-    padding: 1.5rem !important;
-  }
-
-  .video-player {
-    flex: 0 0 auto !important;
-    width: 100% !important;
-    order: 2 !important;
     min-height: 280px !important;
   }
 }

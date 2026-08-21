@@ -227,7 +227,7 @@ const songsWithoutAlbum = songs
             {t('exclusive.section_label').split(' ')[0]} <span style={{ color: '#d4af37' }}>{t('exclusive.section_label').split(' ')[1]}</span>
           </h2>
         </div>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
+        <div className="video-container" style={{ maxWidth: '1400px', margin: '0 auto', paddingBottom: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'stretch' }}>
           {gallery?.filter((m: any) => m.type === 'video')?.slice(0, 1).map((video: any) => {
             const getYoutubeId = (url: string) => {
               if (url.includes('watch?v=')) return url.split('watch?v=')[1].split('&')[0];
